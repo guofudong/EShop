@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:background="@android:color/white"/>
+
+
+    <ImageView
+        android:id="@+id/image_goods"
+        android:layout_width="@dimen/size_100"
+        android:layout_height="@dimen/size_100"
+        android:layout_marginLeft="@dimen/spacing_normal"/>
+
+    <TextView
+        android:id="@+id/text_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_toRightOf="@+id/image_goods"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/font_large"/>
+
+    <TextView
+        android:id="@+id/text_inventory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_goods_price"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_toRightOf="@+id/image_goods"
+        android:text="@string/goods_inventory"
+        android:textColor="@color/gray_dark"
+        android:textSize="@dimen/font_normal"
+    />
+
+    <TextView
+        android:id="@+id/text_inventory_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/text_inventory"
+        android:layout_marginLeft="@dimen/spacing_tiny"
+        android:layout_toRightOf="@+id/text_number"
+        android:text="0"
+        android:textColor="@color/gray_dark"
+        android:textSize="@dimen/font_normal"
+        tools:ignore="HardcodedText"/>
+
+
+    <TextView
+        android:id="@+id/text_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/image_goods"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_toRightOf="@+id/image_goods"
+        android:text="@string/cart_number"
+        android:textColor="@color/gray_dark"
+        android:textSize="@dimen/font_normal"
+    />
+
+    <TextView
+        android:id="@+id/text_number_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/text_number"
+        android:layout_marginLeft="@dimen/spacing_tiny"
+        android:layout_toRightOf="@id/text_number"
+        android:text="1"
+        android:textColor="@color/gray_dark"
+        android:textSize="@dimen/font_normal"
+        tools:ignore="HardcodedText"/>
+
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/image_goods"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:background="@color/gray_light"/>
+
+    <Button
+        android:id="@+id/button_ok"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:layout_alignParentBottom="true"
+        android:text="@string/action_confirm"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_ok"
+        android:layout_below="@+id/divider"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_normal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cart_number"
+                android:textAppearance="@style/ContentText.Large"/>
+
+            <com.gfd.eshop.base.widgets.SimpleNumberPicker
+                android:id="@+id/number_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_tiny"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/spacing_normal">
+
+        <com.gfd.eshop.base.widgets.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager_goods_pictures"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"/>
+
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_45"
+                android:layout_gravity="bottom"
+                app:ci_drawable="@drawable/indicator_yellow_radius"
+                app:ci_drawable_unselected="@drawable/white_radius"/>
+        </com.gfd.eshop.base.widgets.SquareLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:padding="@dimen/spacing_small">
+
+            <ImageButton
+                android:id="@+id/button_favorite"
+                style="@style/Widget.AppCompat.ActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/selector_ic_favorite"/>
+
+            <TextView
+                android:id="@+id/text_goods_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/button_favorite"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:lines="2"
+                android:textAppearance="@style/ContentText.Normal"/>
+
+            <TextView
+                android:id="@+id/text_goods_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/text_goods_name"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/font_large"/>
+
+            <TextView
+                android:id="@+id/text_market_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/text_goods_price"
+                android:layout_marginLeft="@dimen/spacing_small"
+                android:layout_toRightOf="@+id/text_goods_price"
+                android:enabled="false"
+                android:textAppearance="@style/ContentText.Small"/>
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/horizontal_bar_bg">
+            <TextView
+                android:id="@+id/text_goods_details"
+                style="@style/HorizontalItemTextView"
+                android:gravity="center_vertical"
+                android:text="@string/goods_details"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:background="@drawable/horizontal_bar_bg">
+            <TextView
+                android:id="@+id/text_goods_comments"
+                style="@style/HorizontalItemTextView"
+                android:gravity="center_vertical"
+                android:text="@string/goods_comments"/>
+        </FrameLayout>
+    </LinearLayout>
+</ScrollView>

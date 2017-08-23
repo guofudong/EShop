@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/horizontal_card_bg"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_order_sn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:gravity="left"
+        android:paddingLeft="@dimen/spacing_normal"
+        android:paddingRight="@dimen/spacing_normal"
+        android:textAppearance="@style/ContentText.FixedSmall"/>
+
+    <TextView
+        android:id="@+id/text_order_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:gravity="left"
+        android:paddingLeft="@dimen/spacing_normal"
+        android:paddingRight="@dimen/spacing_normal"
+        android:textAppearance="@style/ContentText.FixedSmall"/>
+
+    <LinearLayout
+        android:id="@+id/layout_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/horizontal_bar_bg"
+        android:orientation="vertical"
+        android:padding="1px"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/spacing_small"
+        android:paddingLeft="@dimen/spacing_tiny"
+        android:paddingRight="@dimen/spacing_tiny"
+        android:paddingTop="@dimen/spacing_small">
+        <TextView
+            android:id="@+id/text_subtotal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:gravity="left|center_vertical"
+            android:lines="1"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/font_large"/>
+
+        <Button
+            android:id="@+id/button_cancel"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_weight="1"
+            android:background="@color/gray_light"
+            android:text="@string/action_cancel"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_large"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/button_purchase"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="@string/order_action_purchase"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_large"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>

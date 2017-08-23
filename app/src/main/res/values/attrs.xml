@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomProgressBar">
+        <attr name="loading_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="SimpleNumberPicker">
+        <attr name="min_number" format="integer"/>
+    </declare-styleable>
+</resources>

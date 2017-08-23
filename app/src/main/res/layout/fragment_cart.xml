@@ -1,0 +1,150 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include
+        layout="@layout/partial_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <in.srain.cube.views.ptr.PtrFrameLayout
+                android:id="@id/standard_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ListView
+                    android:id="@+id/list_cart_goods"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@null"
+                    android:dividerHeight="1dp"
+                    android:scrollbars="none"/>
+
+            </in.srain.cube.views.ptr.PtrFrameLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="@dimen/size_45"
+                          android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/size_60"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="@string/cart_total_price"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_large"/>
+
+                <TextView
+                    android:id="@+id/text_total_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:gravity="left|center_vertical"
+                    android:text="0"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/font_large"
+                    tools:ignore="HardcodedText"/>
+
+                <Button
+                    android:id="@+id/button_summit"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/orange"
+                    android:text="@string/cart_action_summit_order"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_large"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_empty_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/center_cart"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:src="@drawable/image_empty_cart"
+            />
+
+            <android.support.v4.widget.Space
+                android:id="@+id/center_cart"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:layout_width="@dimen/size_180"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/center_cart"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:gravity="center"
+                android:text="@string/cart_msg_is_empty"
+                android:textAppearance="@style/ContentText.Large"
+                android:textColor="@color/colorAccent"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/spacing_normal"
+                android:src="@drawable/image_empty_cart"
+            />
+
+            <android.support.v4.widget.Space
+                android:id="@+id/center"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true"/>
+
+            <Button
+                android:id="@+id/button_signin"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/size_180"
+                android:layout_height="@dimen/size_54"
+                android:layout_below="@+id/center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:text="@string/cart_action_sign_in"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_large"/>
+
+        </RelativeLayout>
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

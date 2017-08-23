@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_activated="true">
+        <layer-list>
+
+            <item>
+                <shape>
+                    <solid android:color="@color/orange"/>
+                </shape>
+            </item>
+            <item android:left="3dp">
+                <shape>
+                    <solid android:color="@android:color/white"/>
+                </shape>
+            </item>
+
+
+        </layer-list>
+    </item>
+
+    <item>
+        <shape>
+            <solid android:color="@android:color/transparent"/>
+        </shape>
+
+    </item>
+
+</selector>

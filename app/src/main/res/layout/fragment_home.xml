@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.gfd.eshop.feature.cart.CartFragment">
+
+    <include
+        layout="@layout/partial_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <in.srain.cube.views.ptr.PtrFrameLayout
+        android:id="@id/standard_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/list_home_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="@dimen/spacing_small"
+            android:scrollbars="none"/>
+
+    </in.srain.cube.views.ptr.PtrFrameLayout>
+
+</LinearLayout>

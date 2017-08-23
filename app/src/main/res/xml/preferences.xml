@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:layout="@layout/partial_pref_category"
+        android:title="@string/settings_category_app">
+        <CheckBoxPreference
+            android:key="key_pre_auto_signin"
+            android:defaultValue="true"
+            android:title="@string/settings_pref_auto_signin"/>
+        <CheckBoxPreference
+            android:key="key_pref_not_exit"
+            android:defaultValue="true"
+            android:title="@string/settings_pref_not_exit"/>
+        <CheckBoxPreference
+            android:key="key_pref_show_big_picture"
+            android:defaultValue="true"
+            android:title="@string/settings_pref_show_full_picture"/>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:layout="@layout/partial_pref_category"
+        android:title="@string/settings_category_about">
+        <Preference android:title="@string/settings_pref_official_website">
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="http://www.baidu.com"/>
+        </Preference>
+        <Preference android:title="@string/settings_pref_custom_service_tel">
+            <intent android:action="android.intent.action.DIAL"
+                    android:data="tel:10086"/>
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

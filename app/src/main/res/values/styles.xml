@@ -1,0 +1,100 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="QueryOrderTab">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/size_45</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/tab_query_order_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/spacing_large</item>
+        <item name="android:paddingRight">@dimen/spacing_large</item>
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="android:textColor">@color/selector_text_orange</item>
+    </style>
+
+    <style name="ContentText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="ContentText.FixedSmall">
+        <item name="android:textSize">@dimen/font_small_fixed</item>
+    </style>
+
+    <style name="ContentText.Small">
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="ContentText.Normal">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="ContentText.Large">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="AppBarText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/app_bar_text</item>
+    </style>
+
+    <style name="AppBarText.Huge">
+        <item name="android:textSize">@dimen/font_huge</item>
+    </style>
+
+    <style name="AppBarText.Normal">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="CustomProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:layout_width">@dimen/size_45</item>
+        <item name="android:layout_height">@dimen/size_45</item>
+        <item name="loading_color">@color/colorAccent</item>
+    </style>
+
+    <style name="GoodsTabTextView">
+        <item name="android:layout_width">@dimen/size_80</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/tab_goods_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/AppBarText.Normal</item>
+    </style>
+
+    <style name="HorizontalItemTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_54</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:drawablePadding">@dimen/spacing_small</item>
+        <item name="android:drawableRight">@drawable/ic_chevron_right</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">@dimen/spacing_small</item>
+        <item name="android:textAppearance">@style/ContentText.Large</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="UserInfoEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_45</item>
+        <item name="android:lines">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:textAppearance">@style/ContentText.Normal</item>
+        <item name="android:drawablePadding">@dimen/spacing_tiny</item>
+        <item name="android:paddingLeft">@dimen/spacing_small</item>
+        <item name="android:textColorHint">@color/gray</item>
+    </style>
+
+    <style name="UserInfoButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_54</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+</resources>

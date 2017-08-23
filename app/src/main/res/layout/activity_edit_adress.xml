@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <include
+        layout="@layout/partial_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/size_140"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:gravity="center_vertical"
+            android:text="@string/address_consignee"
+            android:textAppearance="@style/ContentText.Large"/>
+
+        <EditText
+            android:id="@+id/edit_consignee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:ellipsize="end"
+            android:hint="@string/address_hint_consignee"
+            android:inputType="text"
+            android:lines="1"
+            android:textAppearance="@style/ContentText.Small"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/size_140"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:gravity="center_vertical"
+            android:text="@string/address_tel"
+            android:textAppearance="@style/ContentText.Large"/>
+
+        <EditText
+            android:id="@+id/edit_tel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:ellipsize="end"
+            android:hint="@string/address_hint_tel"
+            android:inputType="phone"
+            android:lines="1"
+            android:textAppearance="@style/ContentText.Small"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/size_140"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:gravity="center_vertical"
+            android:text="@string/address_region"
+            android:textAppearance="@style/ContentText.Large"/>
+
+        <TextView
+            android:id="@+id/text_region"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:drawableRight="@drawable/ic_chevron_right"
+            android:ellipsize="end"
+            android:gravity="left|center_vertical"
+            android:hint="@string/address_hint_region"
+            android:lines="1"
+            android:textAppearance="@style/ContentText.Small"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/size_140"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:gravity="center_vertical"
+            android:text="@string/address_detail"
+            android:textAppearance="@style/ContentText.Large"/>
+
+        <EditText
+            android:id="@+id/edit_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:ellipsize="end"
+            android:hint="@string/address_hint_detail"
+            android:inputType="text"
+            android:lines="1"
+            android:textAppearance="@style/ContentText.Small"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/size_140"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:gravity="center_vertical"
+            android:text="@string/address_zipcode"
+            android:textAppearance="@style/ContentText.Large"/>
+
+        <EditText
+            android:id="@+id/edit_zipcode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:ellipsize="end"
+            android:hint="@string/address_hint_zipcode"
+            android:inputType="number"
+            android:lines="1"
+            android:textAppearance="@style/ContentText.Small"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/size_140"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:gravity="center_vertical"
+            android:text="@string/address_email"
+            android:textAppearance="@style/ContentText.Large"/>
+
+        <EditText
+            android:id="@+id/edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:ellipsize="end"
+            android:hint="@string/address_hint_email"
+            android:inputType="textEmailAddress"
+            android:lines="1"
+            android:textAppearance="@style/ContentText.Small"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_save"
+        style="@style/UserInfoButton"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:enabled="false"
+        android:text="@string/address_action_save_and_use"/>
+
+</LinearLayout>

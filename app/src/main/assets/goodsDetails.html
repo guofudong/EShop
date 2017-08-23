@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebView Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        body {
+        font-family: sans-serif;
+        background-color: #eee;
+        }
+        button {
+        height: 40px;
+        margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+<h2 id="title"></h2>
+<button id='customServiceBtn'>联系客服</button>
+</body>
+
+<script>
+    (function () {
+        var title = document.getElementById('title');
+        title.innerText = GoodsDetails.getGoodsName();
+
+        var clickevent = window.ontouchend ? 'touchend' : 'click';
+        var customServiceBtn = document.getElementById('customServiceBtn');
+        customServiceBtn.addEventListener(clickevent, function (evt) {
+            evt.preventDefault();
+            GoodsDetails.makePhoneCall('10086');
+        });
+    })();
+
+</script>
+</html>

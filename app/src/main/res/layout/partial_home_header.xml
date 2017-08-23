@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <com.gfd.eshop.base.widgets.banner.BannerLayout
+        android:id="@+id/layout_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_180"/>
+
+    <TextView
+        android:id="@+id/text_promote_goods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_small"
+        android:text="@string/home_promote_goods"
+        android:textAppearance="@style/ContentText.Large"
+        android:visibility="invisible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/image_promote_one"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_60"
+            android:visibility="invisible"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+
+        <ImageView
+            android:id="@+id/image_promote_two"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_60"
+            android:visibility="invisible"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+
+        <ImageView
+            android:id="@+id/image_promote_three"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_60"
+            android:visibility="invisible"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+
+        <ImageView
+            android:id="@+id/image_promote_four"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_60"
+            android:visibility="invisible"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>

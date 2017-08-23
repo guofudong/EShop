@@ -1,0 +1,104 @@
+// http://vincentbrison.com/2014/07/19/how-to-improve-quality-and-syntax-of-your-android-code
+
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+
+dependencies {
+    checkstyle 'com.puppycrawl.tools:checkstyle:6.5'
+}
+
+def configDir = "${project.rootDir}/config/quality"
+def reportsDir = "${project.buildDir}/reports"
+
+check.dependsOn 'checkstyle', 'findbugs', 'pmd', 'lint'
+
+task checkstyle(type: Checkstyle,
+        group: 'Verification',
+        description: 'Runs cod style checks') {
+    configFile file("$configDir/checkstyle/checkstyle.xml")
+    configProperties.checkstyleSuppressionsPath = file("$configDir/checkstyle/suppressions.xml").absolutePath
+    source 'src'
+    include '**/*.java'
+    exclude '**gen/**'
+    classpath = files()
+}
+
+task findbugs(type: FindBugs,
+        dependsOn: ['compileDebugSources', 'compileReleaseSources'],
+        group: 'Verification',
+        description: 'Inspect java bytecode for bugs') {
+    ignoreFailures = false
+    effort = "max"
+    reportLevel = "high"
+    excludeFilter = new File("$configDir/findbugs/findbugs-filter.xml")
+    classes = files("${project.rootDir}/app/build/intermediates/classes")
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        xml {
+            destination "$reportsDir/findbugs/findbugs.xml"
+        }
+        html {
+            destination "$reportsDir/findbugs/findbugs.html"
+        }
+    }
+
+    classpath = files()
+}
+
+task pmd(type: Pmd,
+        group: 'Verification',
+        description: 'Inspect sourcecode for bugs') {
+    ignoreFailures = false
+    ruleSetFiles = files("$configDir/pmd/pmd-ruleset.xml")
+    ruleSets = []
+
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+        xml {
+            destination "$reportsDir/pmd/pmd.xml"
+        }
+        html {
+            destination "$reportsDir/pmd/pmd.html"
+        }
+    }
+}
+
+android {
+    lintOptions {
+        abortOnError true
+        warningsAsErrors true
+        xmlReport false
+        htmlReport true
+
+        lintOptions {
+            disable 'InvalidPackage'
+            disable 'AllowBackup'
+            disable 'ContentDescription'
+            disable 'IconDensities'
+            disable 'RtlHardcoded'
+            disable 'OldTargetApi'
+            disable 'GradleDependency'
+            disable 'GoogleAppIndexingWarning'
+            disable 'IconLocation'
+            disable 'SpUsage'
+            disable 'ClickableViewAccessibility'
+        }
+
+
+        htmlOutput file("$reportsDir/lint/lint-result.html")
+        xmlOutput file("$reportsDir/lint/lint-result.xml")
+    }
+}
+

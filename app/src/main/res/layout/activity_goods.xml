@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/partial_goods_action_bar"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_goods"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="@dimen/size_45"
+                  android:background="@drawable/horizontal_bar_bg"
+                  android:paddingTop="1px"
+                  android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/button_show_cart"
+            style="@style/Widget.AppCompat.ActionButton"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_cart"/>
+
+        <Button
+            android:id="@+id/button_add_cart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:text="@string/goods_add_to_shopping_cart"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_large"/>
+
+        <Button
+            android:id="@+id/button_buy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="@string/goods_buy_it_now"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_large"/>
+
+    </LinearLayout>
+</LinearLayout>

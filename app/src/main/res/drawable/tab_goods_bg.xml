@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true">
+
+        <layer-list>
+            <item android:gravity="bottom"
+                  android:left="@dimen/spacing_large"
+                  android:right="@dimen/spacing_large">
+                <shape>
+                    <solid android:color="@color/orange"/>
+                </shape>
+            </item>
+            <item android:drawable="@color/colorPrimary" android:bottom="@dimen/size_2"/>
+        </layer-list>
+
+    </item>
+
+    <item>
+        <shape/>
+    </item>
+
+</selector>

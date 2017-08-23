@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+    <TextView
+        android:id="@+id/text_load_complete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:gravity="center"
+        android:text="@string/msg_load_more_complete"/>
+
+    <com.gfd.eshop.base.widgets.CustomProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/CustomProgressBar"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/spacing_small"/>
+
+</FrameLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <include
+        layout="@layout/partial_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:background="@color/gray_light"/>
+        <EditText
+            android:id="@+id/edit_name"
+            style="@style/UserInfoEditText"
+            android:drawableLeft="@drawable/ic_username"
+            android:hint="@string/mine_hint_username"
+            android:inputType="text"/>
+        <View android:layout_width="match_parent"
+              android:layout_height="1px"
+              android:layout_marginLeft="@dimen/spacing_huge"
+              android:background="@color/gray_light"/>
+        <EditText
+            android:id="@+id/edit_password"
+            style="@style/UserInfoEditText"
+            android:drawableLeft="@drawable/ic_password"
+            android:hint="@string/mine_hint_password"
+            android:inputType="textPassword"/>
+
+        <View android:layout_width="match_parent"
+              android:layout_height="1dp"
+              android:background="@color/gray_light"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/button_signin"
+        style="@style/UserInfoButton"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:enabled="false"
+        android:text="@string/mine_action_sign_in"/>
+
+    <TextView
+        android:id="@+id/text_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:padding="@dimen/spacing_tiny"
+        android:text="@string/mine_fast_sign_up"
+        android:textColor="@color/gray_dark"
+        android:textSize="@dimen/font_normal"/>
+
+
+</LinearLayout>

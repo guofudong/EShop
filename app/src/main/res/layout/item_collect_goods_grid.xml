@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_tiny"
+    android:background="@drawable/card_bg"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_normal">
+
+    <com.gfd.eshop.base.widgets.SquareLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/image_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.gfd.eshop.base.widgets.SquareLayout>
+
+
+    <TextView
+        android:id="@+id/text_goods_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:lines="2"
+        android:textAppearance="@style/ContentText.Small"/>
+
+    <TextView
+        android:id="@+id/text_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/font_large"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/text_market_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/ContentText.Small"
+        android:visibility="gone"/>
+
+</LinearLayout>

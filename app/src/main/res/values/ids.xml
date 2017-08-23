@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="standard_toolbar" type="id"/>
+    <item name="standard_refresh_layout" type="id"/>
+    <item name="standard_toolbar_title" type="id"/>
+</resources>

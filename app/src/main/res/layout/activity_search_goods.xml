@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="@dimen/elevation_app_bar">
+        <android.support.v7.widget.Toolbar
+            android:id="@id/standard_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_45"
+            android:background="@color/colorPrimary"
+            app:theme="@style/Widget.AppCompat.Toolbar">
+
+            <com.gfd.eshop.base.widgets.SimpleSearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_36"
+                android:layout_marginRight="@dimen/spacing_normal"
+                android:gravity="center"/>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_is_hot"
+            style="@style/QueryOrderTab"
+            android:drawableRight="@drawable/selector_ic_is_hot"
+            android:text="@string/search_order_is_hot"/>
+
+        <TextView
+            android:id="@+id/text_most_expensive"
+            style="@style/QueryOrderTab"
+            android:drawableRight="@drawable/selector_ic_most_expensive"
+            android:text="@string/search_order_price"/>
+
+        <TextView
+            android:id="@+id/text_cheapest"
+            style="@style/QueryOrderTab"
+            android:drawableRight="@drawable/selector_ic_cheapest"
+            android:text="@string/search_order_price"/>
+
+    </LinearLayout>
+
+    <in.srain.cube.views.ptr.PtrFrameLayout
+        android:id="@id/standard_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/list_goods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="1dp"
+            android:scrollbars="none"/>
+
+    </in.srain.cube.views.ptr.PtrFrameLayout>
+</LinearLayout>

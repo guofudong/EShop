@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_activated="true" android:drawable="@drawable/ic_most_expensive_activated"/>
+    <item android:drawable="@drawable/ic_most_expensive_normal"/>
+</selector>
