@@ -24,3 +24,7 @@
 * [fresco](https://github.com/facebook/fresco)
 * [eventbus](https://github.com/greenrobot/EventBus)
 * [CircleIndicator](https://github.com/ongakuer/CircleIndicator)
+
+# 关注公众号，获取更多资源
+
+![](/screenshot/qcode.jpg)
