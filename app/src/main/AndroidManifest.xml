@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.gfd.eshop"
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    package="com.gfd.eshop"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <application
-        android:name="com.gfd.eshop.feature.EShopApplication"
+        android:name=".feature.EShopApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <meta-data
-            android:name="com.gfd.eshop.base.glide.DefaultGlideModule"
+            android:name=".base.glide.DefaultGlideModule"
             android:value="GlideModule"/>
         <activity
-            android:name="com.gfd.eshop.feature.SplashActivity"
+            android:name=".feature.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,43 +26,43 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.gfd.eshop.feature.EShopMainActivity"
+            android:name=".feature.EShopMainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.goods.GoodsActivity"
+            android:name=".feature.goods.GoodsActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.search.SearchGoodsActivity"
+            android:name=".feature.search.SearchGoodsActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.mine.SignInActivity"
+            android:name=".feature.mine.SignInActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.mine.SignUpActivity"
+            android:name=".feature.mine.SignUpActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.order.preview.OrderPreviewActivity"
+            android:name=".feature.order.preview.OrderPreviewActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.address.edit.EditAddressActivity"
+            android:name=".feature.address.edit.EditAddressActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.address.manage.ManageAddressActivity"
+            android:name=".feature.address.manage.ManageAddressActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.order.list.OrderListActivity"
+            android:name=".feature.order.list.OrderListActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.cart.CartActivity"
+            android:name=".feature.cart.CartActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.settings.SettingsActivity"
+            android:name=".feature.settings.SettingsActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.collect.CollectActivity"
+            android:name=".feature.collect.CollectActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.gfd.eshop.feature.help.HelpActivity"
+            android:name=".feature.help.HelpActivity"
             android:screenOrientation="portrait"/>
     </application>
 
