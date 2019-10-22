@@ -4,11 +4,12 @@ package com.gfd.eshop.base.widgets.banner;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.gfd.eshop.R;
 
@@ -23,7 +24,8 @@ public class BannerLayout extends RelativeLayout {
 
     private static final long sDuration = 4000;
 
-    @BindView(R.id.pager_banner) ViewPager pagerBanner;
+    @BindView(R.id.pager_banner)
+    ViewPager pagerBanner;
     @BindView(R.id.indicator) BannerIndicator mBannerIndicator;
 
     private BannerAdapter mBannerAdapter;
@@ -130,7 +132,6 @@ public class BannerLayout extends RelativeLayout {
     private void init(Context context) {
         LayoutInflater.from(context).inflate(R.layout.widget_banner_layout, this, true);
         ButterKnife.bind(this);
-
         mCyclingHandler = new CyclingHandler(this);
     }
 }

@@ -1,7 +1,7 @@
 package com.gfd.eshop.network.api;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.gfd.eshop.network.core.ApiInterface;
 import com.gfd.eshop.network.core.ApiPath;
@@ -17,11 +17,13 @@ import java.util.List;
  */
 public class ApiAddressList implements ApiInterface {
 
-    @NonNull @Override public String getPath() {
+    @NonNull
+    @Override public String getPath() {
         return ApiPath.ADDRESS_LIST;
     }
 
-    @Nullable @Override public RequestParam getRequestParam() {
+    @Nullable
+    @Override public RequestParam getRequestParam() {
         return new Req();
     }
 

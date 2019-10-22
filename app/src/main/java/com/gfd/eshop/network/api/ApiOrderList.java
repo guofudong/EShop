@@ -1,9 +1,8 @@
 package com.gfd.eshop.network.api;
 
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringDef;
 
 import com.gfd.eshop.network.core.ApiInterface;
 import com.gfd.eshop.network.core.ApiPath;
@@ -41,11 +40,13 @@ public class ApiOrderList implements ApiInterface {
         mReq.mPagination = pagination;
     }
 
-    @NonNull @Override public String getPath() {
+    @NonNull
+    @Override public String getPath() {
         return ApiPath.ORDER_LIST;
     }
 
-    @Nullable @Override public RequestParam getRequestParam() {
+    @Nullable
+    @Override public RequestParam getRequestParam() {
         return mReq;
     }
 

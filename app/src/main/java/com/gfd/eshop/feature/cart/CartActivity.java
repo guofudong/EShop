@@ -1,7 +1,8 @@
 package com.gfd.eshop.feature.cart;
 
 
-import android.support.v4.app.FragmentTransaction;
+
+import androidx.fragment.app.FragmentTransaction;
 
 import com.gfd.eshop.R;
 import com.gfd.eshop.base.BaseActivity;

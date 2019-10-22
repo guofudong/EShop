@@ -1,8 +1,7 @@
 package com.gfd.eshop.network.api;
 
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.gfd.eshop.network.core.ApiPath;
 import com.gfd.eshop.network.core.ApiInterface;
@@ -24,11 +23,13 @@ public class ApiRegion implements ApiInterface {
         mReq.mParentId = parentId;
     }
 
-    @NonNull @Override public String getPath() {
+    @NonNull
+    @Override public String getPath() {
         return ApiPath.REGION;
     }
 
-    @Nullable @Override public RequestParam getRequestParam() {
+    @Nullable
+    @Override public RequestParam getRequestParam() {
         return mReq;
     }
 

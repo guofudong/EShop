@@ -1,7 +1,7 @@
 package com.gfd.eshop.network.api;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.gfd.eshop.network.core.ApiPath;
 import com.gfd.eshop.network.core.ApiInterface;

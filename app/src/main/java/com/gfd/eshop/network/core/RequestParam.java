@@ -1,6 +1,7 @@
 package com.gfd.eshop.network.core;
 
-import android.support.annotation.IntDef;
+
+import androidx.annotation.IntDef;
 
 import com.gfd.eshop.network.UserManager;
 import com.gfd.eshop.network.entity.Session;

@@ -1,6 +1,6 @@
 package com.gfd.eshop.network.entity;
 
-import android.support.annotation.StringDef;
+import androidx.annotation.StringDef;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -3,10 +3,11 @@ package com.gfd.eshop.base.widgets.banner;
 
 import android.database.DataSetObserver;
 import android.os.Parcelable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class InfinitePagerAdapter extends PagerAdapter {
 

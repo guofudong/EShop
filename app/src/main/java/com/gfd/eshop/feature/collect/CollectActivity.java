@@ -1,11 +1,12 @@
 package com.gfd.eshop.feature.collect;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.gfd.eshop.R;
 import com.gfd.eshop.base.BaseActivity;
@@ -27,7 +28,8 @@ import butterknife.BindView;
  */
 public class CollectActivity extends BaseActivity {
 
-    @BindView(R.id.recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
 
     private PtrWrapper mPtrWrapper;
     private CollectGoodsAdapter mGoodsAdapter;

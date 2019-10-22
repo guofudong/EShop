@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
-    <android.support.design.widget.AppBarLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:elevation="@dimen/elevation_app_bar">
-        <android.support.v7.widget.Toolbar
+
+        <androidx.appcompat.widget.Toolbar
             android:id="@id/standard_toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_45"
@@ -20,9 +22,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_36"
                 android:layout_marginRight="@dimen/spacing_normal"
-                android:gravity="center"/>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+                android:gravity="center" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,19 +35,19 @@
             android:id="@+id/text_is_hot"
             style="@style/QueryOrderTab"
             android:drawableRight="@drawable/selector_ic_is_hot"
-            android:text="@string/search_order_is_hot"/>
+            android:text="@string/search_order_is_hot" />
 
         <TextView
             android:id="@+id/text_most_expensive"
             style="@style/QueryOrderTab"
             android:drawableRight="@drawable/selector_ic_most_expensive"
-            android:text="@string/search_order_price"/>
+            android:text="@string/search_order_price" />
 
         <TextView
             android:id="@+id/text_cheapest"
             style="@style/QueryOrderTab"
             android:drawableRight="@drawable/selector_ic_cheapest"
-            android:text="@string/search_order_price"/>
+            android:text="@string/search_order_price" />
 
     </LinearLayout>
 
@@ -60,7 +62,7 @@
             android:layout_height="match_parent"
             android:divider="@null"
             android:dividerHeight="1dp"
-            android:scrollbars="none"/>
+            android:scrollbars="none" />
 
     </in.srain.cube.views.ptr.PtrFrameLayout>
 </LinearLayout>

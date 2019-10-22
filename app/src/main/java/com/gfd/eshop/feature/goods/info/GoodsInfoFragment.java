@@ -3,12 +3,13 @@ package com.gfd.eshop.feature.goods.info;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.gfd.eshop.R;
 import com.gfd.eshop.base.BaseFragment;
@@ -52,7 +53,8 @@ public class GoodsInfoFragment extends BaseFragment {
         return fragment;
     }
 
-    @BindView(R.id.pager_goods_pictures) ViewPager picturesPager; // 用于显示商品图片
+    @BindView(R.id.pager_goods_pictures)
+    ViewPager picturesPager; // 用于显示商品图片
     @BindView(R.id.indicator) CircleIndicator circleIndicator; // ViewPager的圆点指示器
     @BindView(R.id.text_goods_name) TextView tvGoodsName; // 商品名称
     @BindView(R.id.text_goods_price) TextView tvGoodsPrice; // 商品价格

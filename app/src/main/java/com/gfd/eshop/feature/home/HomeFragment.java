@@ -80,7 +80,7 @@ public class HomeFragment extends BaseFragment {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(R.layout.partial_home_header, goodsListView, false);
 
-        BannerLayout bannerLayout = ButterKnife.findById(view, R.id.layout_banner);
+        BannerLayout bannerLayout = view.findViewById(R.id.layout_banner);
         mBannerAdapter = new BannerAdapter<Banner>() {
             @Override
             protected void bind(ViewHolder holder, Banner data) {
@@ -89,12 +89,12 @@ public class HomeFragment extends BaseFragment {
         };
         bannerLayout.setBannerAdapter(mBannerAdapter);
 
-        mIvPromotes[0] = ButterKnife.findById(view, R.id.image_promote_one);
-        mIvPromotes[1] = ButterKnife.findById(view, R.id.image_promote_two);
-        mIvPromotes[2] = ButterKnife.findById(view, R.id.image_promote_three);
-        mIvPromotes[3] = ButterKnife.findById(view, R.id.image_promote_four);
+        mIvPromotes[0] = view.findViewById(R.id.image_promote_one);
+        mIvPromotes[1] = view.findViewById(R.id.image_promote_two);
+        mIvPromotes[2] = view.findViewById(R.id.image_promote_three);
+        mIvPromotes[3] = view.findViewById(R.id.image_promote_four);
 
-        mTvPromoteGoods = ButterKnife.findById(view, R.id.text_promote_goods);
+        mTvPromoteGoods = view.findViewById(R.id.text_promote_goods);
 
         goodsListView.addHeaderView(view);
 

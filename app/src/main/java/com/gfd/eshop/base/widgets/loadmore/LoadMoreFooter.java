@@ -2,13 +2,14 @@ package com.gfd.eshop.base.widgets.loadmore;
 
 
 import android.content.Context;
-import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.IntDef;
 
 import com.gfd.eshop.R;
 

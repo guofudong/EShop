@@ -2,9 +2,10 @@ package com.gfd.eshop.feature.search;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.gfd.eshop.R;
 import com.gfd.eshop.base.BaseActivity;

@@ -2,11 +2,12 @@ package com.gfd.eshop.base.widgets;
 
 
 import android.content.Context;
-import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.IntDef;
 
 import com.gfd.eshop.R;
 

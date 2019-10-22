@@ -1,7 +1,6 @@
 package com.gfd.eshop.network;
 
-
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.gfd.eshop.network.api.ApiAddressList;
 import com.gfd.eshop.network.api.ApiCartList;

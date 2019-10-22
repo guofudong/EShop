@@ -2,7 +2,8 @@ package com.gfd.eshop.base.wrapper;
 
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 import com.gfd.eshop.R;
 import com.gfd.eshop.base.widgets.ptr.RefreshHeader;
@@ -16,25 +17,27 @@ public abstract class PtrWrapper {
     private PtrFrameLayout mRefreshLayout;
 
     private PtrDefaultHandler mPtrHandler = new PtrDefaultHandler() {
-        @Override public void onRefreshBegin(PtrFrameLayout frame) {
+        @Override
+        public void onRefreshBegin(PtrFrameLayout frame) {
             onRefresh();
         }
     };
 
     public PtrWrapper(Activity activity) {
-        mRefreshLayout = ButterKnife.findById(activity, R.id.standard_refresh_layout);
+        mRefreshLayout = activity.findViewById(R.id.standard_refresh_layout);
         initPtr();
     }
 
     public PtrWrapper(Fragment fragment) {
         //noinspection ConstantConditions
-        mRefreshLayout = ButterKnife.findById(fragment.getView(), R.id.standard_refresh_layout);
+        mRefreshLayout = fragment.getView().findViewById( R.id.standard_refresh_layout);
         initPtr();
     }
 
     public void postRefresh(long delay) {
         mRefreshLayout.postDelayed(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 mRefreshLayout.autoRefresh();
             }
         }, delay);

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,7 +12,7 @@
         android:id="@+id/layout_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottom_bar"
@@ -23,6 +22,6 @@
         app:bb_inActiveTabColor="@color/gray_dark"
         app:bb_showShadow="false"
         app:bb_tabXmlResource="@xml/bottombar_tabs"
-        app:bb_titleTextAppearance="@style/ContentText.FixedSmall"/>
+        app:bb_titleTextAppearance="@style/ContentText.FixedSmall" />
 
 </LinearLayout>

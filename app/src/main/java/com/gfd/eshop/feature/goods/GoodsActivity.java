@@ -4,13 +4,14 @@ package com.gfd.eshop.feature.goods;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.gfd.eshop.R;
 import com.gfd.eshop.base.BaseActivity;

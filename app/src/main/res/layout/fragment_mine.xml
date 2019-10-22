@@ -1,26 +1,28 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="com.gfd.eshop.feature.cart.CartFragment">
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    tools:context="com.gfd.eshop.feature.cart.CartFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/partial_mine_top"/>
+        <include layout="@layout/partial_mine_top" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/horizontal_bar_bg">
+
             <TextView
                 android:id="@+id/text_order_unconfirmed"
                 style="@style/HorizontalItemTextView"
                 android:drawableLeft="@drawable/ic_order_unconfirmed"
                 android:gravity="center_vertical"
-                android:text="@string/mine_order_unconfirmed"/>
+                android:text="@string/mine_order_unconfirmed" />
         </FrameLayout>
 
         <LinearLayout
@@ -35,6 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/white">
+
                 <TextView
                     android:id="@+id/text_wait_pay"
                     android:layout_width="wrap_content"
@@ -45,7 +48,7 @@
                     android:padding="@dimen/spacing_tiny"
                     android:text="@string/mine_order_wait_pay"
                     android:textColor="@color/gray_dark"
-                    android:textSize="@dimen/font_normal"/>
+                    android:textSize="@dimen/font_normal" />
             </FrameLayout>
 
             <FrameLayout
@@ -54,6 +57,7 @@
                 android:layout_marginLeft="1dp"
                 android:layout_weight="1"
                 android:background="@android:color/white">
+
                 <TextView
                     android:id="@+id/text_wait_ship"
                     android:layout_width="wrap_content"
@@ -64,7 +68,7 @@
                     android:padding="@dimen/spacing_tiny"
                     android:text="@string/mine_order_wait_ship"
                     android:textColor="@color/gray_dark"
-                    android:textSize="@dimen/font_normal"/>
+                    android:textSize="@dimen/font_normal" />
             </FrameLayout>
 
             <FrameLayout
@@ -73,6 +77,7 @@
                 android:layout_marginLeft="1dp"
                 android:layout_weight="1"
                 android:background="@android:color/white">
+
                 <TextView
                     android:id="@+id/text_shipped"
                     android:layout_width="wrap_content"
@@ -83,7 +88,7 @@
                     android:padding="@dimen/spacing_tiny"
                     android:text="@string/mine_order_shipped"
                     android:textColor="@color/gray_dark"
-                    android:textSize="@dimen/font_normal"/>
+                    android:textSize="@dimen/font_normal" />
             </FrameLayout>
 
             <FrameLayout
@@ -92,6 +97,7 @@
                 android:layout_marginLeft="1dp"
                 android:layout_weight="1"
                 android:background="@android:color/white">
+
                 <TextView
                     android:id="@+id/text_history"
                     android:layout_width="wrap_content"
@@ -102,7 +108,7 @@
                     android:padding="@dimen/spacing_tiny"
                     android:text="@string/mine_order_history"
                     android:textColor="@color/gray_dark"
-                    android:textSize="@dimen/font_normal"/>
+                    android:textSize="@dimen/font_normal" />
             </FrameLayout>
 
         </LinearLayout>
@@ -112,12 +118,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_normal"
             android:background="@drawable/horizontal_bar_bg">
+
             <TextView
                 android:id="@+id/text_favorite"
                 style="@style/HorizontalItemTextView"
                 android:drawableLeft="@drawable/ic_favorite"
                 android:gravity="center_vertical"
-                android:text="@string/mine_favorite"/>
+                android:text="@string/mine_favorite" />
         </FrameLayout>
 
         <FrameLayout
@@ -125,12 +132,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_tiny"
             android:background="@drawable/horizontal_bar_bg">
+
             <TextView
                 android:id="@+id/text_manage_address"
                 style="@style/HorizontalItemTextView"
                 android:drawableLeft="@drawable/ic_address"
                 android:gravity="center_vertical"
-                android:text="@string/address_title_manage"/>
+                android:text="@string/address_title_manage" />
         </FrameLayout>
 
         <FrameLayout
@@ -138,14 +146,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_tiny"
             android:background="@drawable/horizontal_bar_bg">
+
             <TextView
                 android:id="@+id/text_help"
                 style="@style/HorizontalItemTextView"
                 android:drawableLeft="@drawable/ic_help"
                 android:gravity="center_vertical"
-                android:text="@string/mine_help"/>
+                android:text="@string/mine_help" />
         </FrameLayout>
 
-
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

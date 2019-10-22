@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
@@ -15,7 +14,7 @@
         android:ellipsize="end"
         android:gravity="left"
         android:lines="2"
-        android:textAppearance="@style/ContentText.Normal"/>
+        android:textAppearance="@style/ContentText.Normal" />
 
     <TextView
         android:id="@+id/text_amount"
@@ -24,6 +23,6 @@
         android:layout_alignBottom="@+id/text_goods_name"
         android:layout_alignParentRight="true"
         android:textAppearance="@style/ContentText.Small"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorAccent" />
 
 </RelativeLayout>

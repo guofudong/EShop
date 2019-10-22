@@ -1,7 +1,6 @@
 package com.gfd.eshop.network.core;
 
-
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.gfd.eshop.network.entity.Address;
 import com.gfd.eshop.network.entity.CartBill;

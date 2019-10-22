@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <android.support.v4.widget.Space
+    <Space
         android:id="@+id/center"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -28,6 +27,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/spacing_normal"
         android:background="@drawable/image_no_comments"/>
-
 
 </RelativeLayout>

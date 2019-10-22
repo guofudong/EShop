@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -33,7 +33,7 @@
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_chevron_right"/>
 
-                <android.support.v4.widget.Space
+                <Space
                     android:id="@+id/center"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -135,7 +135,7 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 
 </LinearLayout>

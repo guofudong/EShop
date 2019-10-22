@@ -2,12 +2,13 @@ package com.gfd.eshop.feature.order.preview;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.gfd.eshop.R;
 import com.gfd.eshop.base.BaseActivity;

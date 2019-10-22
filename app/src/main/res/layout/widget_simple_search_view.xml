@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@drawable/search_view_bg"
-              android:gravity="center_vertical"
-              android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/search_view_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
     <ImageButton
         android:id="@+id/button_search"
         style="@style/Widget.AppCompat.ActionButton"
         android:layout_width="@dimen/size_60"
         android:layout_height="@dimen/size_36"
-        android:src="@drawable/ic_menu_search"/>
+        android:src="@drawable/ic_menu_search" />
 
     <EditText
         android:id="@+id/edit_query"
@@ -21,7 +21,7 @@
         android:background="@null"
         android:hint="@string/search_hint"
         android:singleLine="true"
-        android:textAppearance="@style/ContentText.Normal"/>
+        android:textAppearance="@style/ContentText.Normal" />
 
     <ImageButton
         android:id="@+id/button_clear"
@@ -29,6 +29,6 @@
         android:layout_width="@dimen/size_45"
         android:layout_height="@dimen/size_36"
         android:src="@drawable/ic_search_clear"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 </LinearLayout>

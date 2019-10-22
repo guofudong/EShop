@@ -1,8 +1,9 @@
 package com.gfd.eshop.feature.address.manage;
 
 import android.content.Intent;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.gfd.eshop.R;
 import com.gfd.eshop.base.BaseActivity;
@@ -30,7 +31,8 @@ import butterknife.OnClick;
  */
 public class ManageAddressActivity extends BaseActivity {
 
-    @BindView(R.id.recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
 
     private ProgressWrapper mProgressWrapper;
     private AddressAdapter mAddressAdapter;

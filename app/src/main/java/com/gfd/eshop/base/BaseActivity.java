@@ -2,8 +2,10 @@ package com.gfd.eshop.base;
 
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
+
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
 
 import com.gfd.eshop.network.EShopClient;
 import com.gfd.eshop.network.core.ApiInterface;
@@ -61,7 +63,8 @@ public abstract class BaseActivity extends TransitionActivity {
     public void onEvent(UserEvent event) {
     }
 
-    @LayoutRes protected abstract int getContentViewLayout();
+    @LayoutRes
+    protected abstract int getContentViewLayout();
 
     protected abstract void initView();
 
