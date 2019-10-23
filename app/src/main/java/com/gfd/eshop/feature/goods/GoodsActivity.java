@@ -78,9 +78,7 @@ public class GoodsActivity extends BaseActivity implements ViewPager.OnPageChang
     @Override protected void initView() {
         new ToolbarWrapper(this);
         goodsPager.addOnPageChangeListener(this);
-
         mBadgeView = new BadgeWrapper(btnCart);
-
         // 获取商品信息.
         int goodsId = getIntent().getIntExtra(EXTRA_GOODS_ID, 0);
         enqueue(new ApiGoodsInfo(goodsId));
@@ -94,9 +92,7 @@ public class GoodsActivity extends BaseActivity implements ViewPager.OnPageChang
                 if (success) {
                     ApiGoodsInfo.Rsp goodsRsp = (ApiGoodsInfo.Rsp) rsp;
                     mGoodsInfo = goodsRsp.getData();
-                    goodsPager.setAdapter(
-                            new GoodsPagerAdapter(getSupportFragmentManager(), mGoodsInfo)
-                    );
+                    goodsPager.setAdapter(new GoodsPagerAdapter(getSupportFragmentManager(), mGoodsInfo));
                     chooseTab(0);
                 }
                 break;

@@ -34,13 +34,10 @@ public class ApiHomeBanner implements ApiInterface {
     }
 
     public static class Rsp extends ResponseEntity {
-
         @SerializedName("data")
         private Data mData;
 
-        public Data getData() {
-            return mData;
-        }
+        public Data getData() { return mData; }
 
         public static class Data {
 
@@ -57,4 +54,5 @@ public class ApiHomeBanner implements ApiInterface {
             }
         }
     }
+
 }

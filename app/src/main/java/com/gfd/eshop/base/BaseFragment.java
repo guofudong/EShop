@@ -29,52 +29,51 @@ import okhttp3.Call;
  */
 public abstract class BaseFragment extends Fragment {
 
-
-    private Unbinder mUnbinder;
+    private Unbinder mUnbind;
 
     @Nullable
     @Override
-    public final View onCreateView(LayoutInflater inflater,
-                                   @Nullable ViewGroup container,
-                                   @Nullable Bundle savedInstanceState) {
+    public final View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getContentViewLayout(), container, false);
-        mUnbinder = ButterKnife.bind(this, view);
+        mUnbind = ButterKnife.bind(this, view);
         return view;
     }
 
-    @Override public final void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    @Override
+    public final void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
         EventBus.getDefault().register(this);
     }
 
-
-    @Override public final void onDestroyView() {
+    @Override
+    public final void onDestroyView() {
         super.onDestroyView();
         EShopClient.getInstance().cancelByTag(getClass().getSimpleName());
         EventBus.getDefault().unregister(this);
-        mUnbinder.unbind();
-        mUnbinder = null;
+        mUnbind.unbind();
+        mUnbind = null;
     }
 
+    /**
+     * 执行异步请求
+     * @param apiInterface
+     * @return
+     */
     protected final Call enqueue(final ApiInterface apiInterface) {
         UiCallback uiCallback = new UiCallback() {
             @Override
             public void onBusinessResponse(boolean success, ResponseEntity responseEntity) {
-                BaseFragment.this.onBusinessResponse(
-                        apiInterface.getPath(),
-                        success,
-                        responseEntity);
+                BaseFragment.this.onBusinessResponse(apiInterface.getPath(), success, responseEntity);
             }
         };
-
-        return EShopClient.getInstance()
-                .enqueue(apiInterface, uiCallback, getClass().getSimpleName());
+        return EShopClient.getInstance().enqueue(apiInterface, uiCallback, getClass().getSimpleName());
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onEvent(UserEvent event) {
     }
+
     @LayoutRes
     protected abstract int getContentViewLayout();
 

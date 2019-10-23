@@ -20,12 +20,12 @@ public interface ApiPath {
     String CART_DELETE = "/cart/delete";
     String CART_LIST = "/cart/list";
     String CART_UPDATE = "/cart/update";
-    String CATEGORY = "/category";
-    String GOODS = "/goods";
-    String HOME_DATA = "/home/data";
-    String HOME_CATEGORY = "/home/category";
+    String CATEGORY = "category";
+    String GOODS = "goods";
+    String HOME_DATA = "home/data";
+    String HOME_CATEGORY = "home/category";
     String REGION = "/region";
-    String SEARCH = "/search";
+    String SEARCH = "search";
     String USER_SIGNIN = "/user/signin";
     String USER_SIGNUP = "/user/signup";
     String USER_INFO = "/user/info";

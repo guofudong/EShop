@@ -1,5 +1,7 @@
 package com.gfd.eshop.network;
 
+import android.util.Log;
+
 import com.gfd.eshop.network.core.ApiInterface;
 import com.gfd.eshop.network.core.ResponseEntity;
 import com.gfd.eshop.network.core.UiCallback;
@@ -19,7 +21,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 public class EShopClient {
 
-    public static final String BASE_URL = "http://106.14.32.204/eshop/emobile/?url=";
+    public static final String BASE_URL = "https://www.fastmock.site/mock/f9c998b9cc741ac815efc2c8d1e09f5c/shop/";
 
     private static EShopClient sInstance;
 
@@ -37,18 +39,10 @@ public class EShopClient {
 
     private EShopClient() {
         mGson = new Gson();
-
-        HttpLoggingInterceptor mLoggingInterceptor = new HttpLoggingInterceptor(
-                new HttpLoggingInterceptor.Logger() {
-                    @Override public void log(String message) {
-                        if (mShowLog) System.out.println(message); // NOPMD
-                    }
-                });
-
+        HttpLoggingInterceptor mLoggingInterceptor = new HttpLoggingInterceptor();
         mLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
         mOkHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(mLoggingInterceptor)
+                .addNetworkInterceptor(mLoggingInterceptor)
                 .build();
 
     }
@@ -77,11 +71,8 @@ public class EShopClient {
      * @param uiCallback   回调
      * @return {@link Call}对象.
      */
-    public Call enqueue(ApiInterface apiInterface,
-                        UiCallback uiCallback,
-                        String tag) {
+    public Call enqueue(ApiInterface apiInterface, UiCallback uiCallback, String tag) {
         Call call = newApiCall(apiInterface, tag);
-        //noinspection unchecked
         uiCallback.setResponseType(apiInterface.getResponseType());
         call.enqueue(uiCallback);
         return call;

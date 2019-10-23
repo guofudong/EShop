@@ -72,14 +72,15 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        //设置标题
         new ToolbarWrapper(this).setCustomTitle(R.string.home_title);
-
+        //商品列表
         mGoodsAdapter = new HomeGoodsAdapter();
         goodsListView.setAdapter(mGoodsAdapter);
-
+        //List-Header-View
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(R.layout.partial_home_header, goodsListView, false);
-
+        //轮播图
         BannerLayout bannerLayout = view.findViewById(R.id.layout_banner);
         mBannerAdapter = new BannerAdapter<Banner>() {
             @Override
@@ -88,22 +89,19 @@ public class HomeFragment extends BaseFragment {
             }
         };
         bannerLayout.setBannerAdapter(mBannerAdapter);
-
+        //促销单品
         mIvPromotes[0] = view.findViewById(R.id.image_promote_one);
         mIvPromotes[1] = view.findViewById(R.id.image_promote_two);
         mIvPromotes[2] = view.findViewById(R.id.image_promote_three);
         mIvPromotes[3] = view.findViewById(R.id.image_promote_four);
-
         mTvPromoteGoods = view.findViewById(R.id.text_promote_goods);
-
         goodsListView.addHeaderView(view);
-
+        //下拉刷新
         mPtrWrapper = new PtrWrapper(this) {
             @Override
             public void onRefresh() {
                 mBannerRefreshed = false;
                 mCategoryRefreshed = false;
-
                 // 获取轮播图和促销商品数据.
                 enqueue(new ApiHomeBanner());
                 // 获取首页商品分类数据.
@@ -141,12 +139,12 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-
-    // 设置显示促销商品.
+    /**
+     * 设置显示促销商品.
+     * @param simpleGoodsList
+     */
     private void setPromoteGoods(final List<SimpleGoods> simpleGoodsList) {
-
         mTvPromoteGoods.setVisibility(View.VISIBLE);
-
         for (int i = 0; i < mIvPromotes.length; i++) {
             mIvPromotes[i].setVisibility(View.VISIBLE);
             simpleGoods = null;
@@ -155,20 +153,12 @@ public class HomeFragment extends BaseFragment {
             } else {
                 simpleGoods = simpleGoodsList.get(i - 1);
             }
-
-            GlideUtils.loadPromote(simpleGoods.getImg(),
-                    mIvPromotes[i],
-                    PROMOTE_PLACE_HOLDER[i],
-                    PROMOTE_COLORS[i]);
-
-            mIvPromotes[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = GoodsActivity.getStartIntent(
-                            getContext(), simpleGoods.getId());
-                    getActivity().startActivity(intent);
-                }
+            GlideUtils.loadPromote(simpleGoods.getImg(), mIvPromotes[i], PROMOTE_PLACE_HOLDER[i], PROMOTE_COLORS[i]);
+            mIvPromotes[i].setOnClickListener(v -> {
+                Intent intent = GoodsActivity.getStartIntent(getContext(), simpleGoods.getId());
+                getActivity().startActivity(intent);
             });
         }
     }
+
 }

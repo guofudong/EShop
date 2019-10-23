@@ -5,15 +5,27 @@
 * 3.商品的分类，筛选排序
 * 4.管理所有订单
 
-# Apk
-[点击下载](/screenshot/EShop.apk)
-
 # 项目截图
 
 ![](/screenshot/01.jpeg) ![](/screenshot/02.jpeg)
 ![](/screenshot/03.jpeg) ![](/screenshot/04.jpeg)
 ![](/screenshot/05.jpeg) ![](/screenshot/06.jpeg)
 ![](/screenshot/07.jpeg)
+
+# 接口数据
+原来的接口已不能使用，数据来源更改为mock，接口返回数据统一格式如下：
+```json
+{
+    "status": {
+        "succeed": 1,
+        "error_code": 0,
+        "error_desc": ""
+    },
+    "data": {
+        
+    }
+}
+```
 
 # 第三方库
 * [leakcanary](https://github.com/square/leakcanary)

@@ -48,7 +48,10 @@ public class GoodsDetailsFragment extends BaseFragment {
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/goodsDetails.html");
+        webSettings.setUseWideViewPort(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        webSettings.setLoadWithOverviewMode(true);
+        webView.loadUrl("https://upload-images.jianshu.io/upload_images/1797490-012666441f452c00.png");
         webView.addJavascriptInterface(new WebViewInterface(), "GoodsDetails");
     }
 

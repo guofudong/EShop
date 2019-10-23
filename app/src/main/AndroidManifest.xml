@@ -14,9 +14,9 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <meta-data
+       <!-- <meta-data
             android:name=".base.glide.DefaultGlideModule"
-            android:value="GlideModule"/>
+            android:value="GlideModule"/>-->
         <activity
             android:name=".feature.SplashActivity"
             android:screenOrientation="portrait">

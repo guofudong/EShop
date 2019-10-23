@@ -24,4 +24,5 @@ public class Status {
     public String getErrorDesc() {
         return mErrorDesc;
     }
+
 }

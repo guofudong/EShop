@@ -49,11 +49,7 @@ public class HomeGoodsAdapter extends BaseListAdapter<CategoryHome, HomeGoodsAda
 
             for (int i = 0; i < mImageViews.length; i++) {
                 final int index = i;
-                mImageViews[i].setOnClickListener(new View.OnClickListener() {
-                    @Override public void onClick(View v) {
-                        navigateToGoodsActivity(index);
-                    }
-                });
+                mImageViews[i].setOnClickListener(v -> navigateToGoodsActivity(index));
             }
         }
 
