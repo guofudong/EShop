@@ -44,7 +44,6 @@ public class GoodsInfoFragment extends BaseFragment {
      * @return 新的GoodsInfoFragment对象
      */
     public static GoodsInfoFragment newInstance(GoodsInfo goodsInfo) {
-
         Bundle args = new Bundle();
         args.putString(ARGUMENT_GOODS_INFO, new Gson().toJson(goodsInfo));
 
@@ -72,31 +71,24 @@ public class GoodsInfoFragment extends BaseFragment {
     @Override protected void initView() {
         mProgressWrapper = new ProgressWrapper();
         mPhotoWrapper = new PhotoWrapper();
-
         // 获取传入的商品信息实体
         String str = getArguments().getString(ARGUMENT_GOODS_INFO);
         mGoodsInfo = new Gson().fromJson(str, GoodsInfo.class);
-
         // 设置显示商品图片的ViewPager
         GoodsPictureAdapter adapter = new GoodsPictureAdapter(mGoodsInfo.getPictures()) {
-
             @Override public void onImageClicked(Picture picture) {
                 mPhotoWrapper.showPhoto(GoodsInfoFragment.this, picture.getLarge());
             }
         };
         picturesPager.setAdapter(adapter);
         circleIndicator.setViewPager(picturesPager);
-
-
         // 设置商品名称, 价格等信息
         tvGoodsName.setText(mGoodsInfo.getName());
         tvGoodsPrice.setText(mGoodsInfo.getShopPrice());
-
         // 设置商场价格, 并添加删除线
         String marketPrice = mGoodsInfo.getMarketPrice();
         SpannableString spannableString = new SpannableString(marketPrice);
-        spannableString.setSpan(
-                new StrikethroughSpan(), 0, marketPrice.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new StrikethroughSpan(), 0, marketPrice.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvMarketPrice.setText(spannableString);
         btnFavorite.setSelected(mGoodsInfo.isCollected());
     }
@@ -130,16 +122,14 @@ public class GoodsInfoFragment extends BaseFragment {
             ToastWrapper.show(R.string.collect_msg_already_collected);
             return;
         }
-
         if (!UserManager.getInstance().hasUser()) {
             Intent intent = new Intent(getContext(), SignInActivity.class);
             startActivity(intent);
             return;
         }
-
         mProgressWrapper.showProgress(this);
         ApiCollectCreate apiCollectCreate = new ApiCollectCreate(mGoodsInfo.getId());
         enqueue(apiCollectCreate);
-
     }
+
 }

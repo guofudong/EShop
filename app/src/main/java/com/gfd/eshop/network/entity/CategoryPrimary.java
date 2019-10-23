@@ -15,4 +15,5 @@ public class CategoryPrimary extends CategoryBase {
     public List<CategoryBase> getChildren() {
         return mChildren;
     }
+
 }

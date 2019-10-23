@@ -26,37 +26,40 @@ import okhttp3.Call;
  */
 public abstract class BaseActivity extends TransitionActivity {
 
-    private Unbinder mUnbinder;
+    private Unbinder mUnbind;
 
-    @Override protected final void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    protected final void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewLayout());
-        mUnbinder = ButterKnife.bind(this);
+        mUnbind = ButterKnife.bind(this);
         initView();
         EventBus.getDefault().register(this);
     }
 
-    @Override protected final void onDestroy() {
+    @Override
+    protected final void onDestroy() {
         super.onDestroy();
         EShopClient.getInstance().cancelByTag(getClass().getSimpleName());
         EventBus.getDefault().unregister(this);
-        mUnbinder.unbind();
-        mUnbinder = null;
+        mUnbind.unbind();
+        mUnbind = null;
     }
 
+    /**
+     * 异步请求
+     *
+     * @param apiInterface
+     * @return
+     */
     protected Call enqueue(final ApiInterface apiInterface) {
         UiCallback uiCallback = new UiCallback() {
             @Override
             public void onBusinessResponse(boolean success, ResponseEntity responseEntity) {
-                BaseActivity.this.onBusinessResponse(
-                        apiInterface.getPath(),
-                        success,
-                        responseEntity);
+                BaseActivity.this.onBusinessResponse(apiInterface.getPath(), success, responseEntity);
             }
         };
-
-        return EShopClient.getInstance()
-                .enqueue(apiInterface, uiCallback, getClass().getSimpleName());
+        return EShopClient.getInstance().enqueue(apiInterface, uiCallback, getClass().getSimpleName());
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
@@ -69,4 +72,5 @@ public abstract class BaseActivity extends TransitionActivity {
     protected abstract void initView();
 
     protected abstract void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp);
+
 }

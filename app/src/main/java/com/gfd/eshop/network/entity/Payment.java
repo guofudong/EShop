@@ -30,4 +30,5 @@ public class Payment {
     public String getCode() {
         return mCode;
     }
+
 }

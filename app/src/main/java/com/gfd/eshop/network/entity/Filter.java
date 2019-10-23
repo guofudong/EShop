@@ -18,7 +18,7 @@ public class Filter {
 
     @StringDef({SORT_PRICE_DESC, SORT_PRICE_ASC, SORT_IS_HOT})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface SortOrder {
+    @interface SortOrder {
     }
 
     @SerializedName("keywords") private String mKeywords;
@@ -46,4 +46,5 @@ public class Filter {
     public int getCategoryId() {
         return mCategoryId;
     }
+
 }

@@ -24,4 +24,5 @@ public class Shipping {
     public String getPrice() {
         return mPrice;
     }
+
 }

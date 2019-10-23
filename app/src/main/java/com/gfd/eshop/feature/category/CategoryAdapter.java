@@ -10,8 +10,10 @@ import com.gfd.eshop.network.entity.CategoryPrimary;
 
 import butterknife.BindView;
 
+/**
+ * 分类列表Adapter
+ */
 public class CategoryAdapter extends BaseListAdapter<CategoryPrimary, CategoryAdapter.ViewHolder> {
-
 
     @Override protected int getItemViewLayout() {
         return R.layout.item_primary_category;
@@ -33,4 +35,5 @@ public class CategoryAdapter extends BaseListAdapter<CategoryPrimary, CategoryAd
             tvCategory.setText(getItem(position).getName());
         }
     }
+
 }

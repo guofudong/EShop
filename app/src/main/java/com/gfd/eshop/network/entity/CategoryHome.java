@@ -13,4 +13,5 @@ public class CategoryHome extends CategoryBase {
     public List<SimpleGoods> getHotGoodsList() {
         return mHotGoodsList;
     }
+
 }

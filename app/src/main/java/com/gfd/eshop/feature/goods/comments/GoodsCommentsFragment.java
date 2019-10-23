@@ -19,12 +19,10 @@ public class GoodsCommentsFragment extends BaseFragment {
     }
 
     @Override protected void initView() {
-
     }
 
     @Override
     protected void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp) {
-
     }
     
 }

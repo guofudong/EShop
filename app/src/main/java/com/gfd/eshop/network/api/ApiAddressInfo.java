@@ -10,6 +10,9 @@ import com.gfd.eshop.network.core.ResponseEntity;
 import com.gfd.eshop.network.entity.Address;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * 获取地址信息
+ */
 public class ApiAddressInfo implements ApiInterface {
 
     private Req mReq;
@@ -35,18 +38,16 @@ public class ApiAddressInfo implements ApiInterface {
 
     public static class Req extends RequestParam {
         @SerializedName("address_id") private int mId;
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
     }
 
     public static class Rsp extends ResponseEntity {
-
         @SerializedName("data") private Address mData;
-
         public Address getData() {
             return mData;
         }
     }
+
 }

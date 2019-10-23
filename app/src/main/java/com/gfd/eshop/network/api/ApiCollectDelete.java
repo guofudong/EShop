@@ -9,6 +9,9 @@ import com.gfd.eshop.network.core.RequestParam;
 import com.gfd.eshop.network.core.ResponseEntity;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * 删除收藏
+ */
 public class ApiCollectDelete implements ApiInterface {
 
     private final Req mReq;
@@ -33,9 +36,7 @@ public class ApiCollectDelete implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @SerializedName("rec_id") private int mRecId;
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -43,4 +44,5 @@ public class ApiCollectDelete implements ApiInterface {
 
     public static class Rsp extends ResponseEntity {
     }
+
 }

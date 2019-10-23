@@ -24,4 +24,5 @@ public class Picture {
     public String getLarge() {
         return mLarge;
     }
+
 }

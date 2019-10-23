@@ -38,10 +38,8 @@ public class ApiOrderDone implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @SerializedName("pay_id") private int mPayId;
         @SerializedName("shipping_id") private int mShippingId;
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -50,7 +48,6 @@ public class ApiOrderDone implements ApiInterface {
     public static class Rsp extends ResponseEntity {
 
         @SerializedName("data") Data mData;
-
         public Data getData() {
             return mData;
         }
@@ -59,18 +56,16 @@ public class ApiOrderDone implements ApiInterface {
             @SerializedName("order_sn") private String mSn;
             @SerializedName("order_id") private String mId;
             @SerializedName("order_info") private OrderInfo mOrderInfo;
-
             public String getSn() {
                 return mSn;
             }
-
             public String getId() {
                 return mId;
             }
-
             public OrderInfo getOrderInfo() {
                 return mOrderInfo;
             }
         }
     }
+
 }

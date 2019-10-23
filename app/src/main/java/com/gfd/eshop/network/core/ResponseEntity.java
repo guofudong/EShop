@@ -13,4 +13,5 @@ public abstract class ResponseEntity {
     public Status getStatus() {
         return mStatus;
     }
+
 }

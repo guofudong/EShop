@@ -19,10 +19,9 @@ import java.util.List;
  */
 public abstract class GoodsPictureAdapter extends PagerAdapter {
 
-
     private final List<Picture> mPictureList = new ArrayList<>();
 
-    public GoodsPictureAdapter(List<Picture> pictures) {
+    GoodsPictureAdapter(List<Picture> pictures) {
         mPictureList.addAll(pictures);
     }
 
@@ -43,12 +42,7 @@ public abstract class GoodsPictureAdapter extends PagerAdapter {
         final Picture picture = mPictureList.get(position);
         GlideUtils.loadFullPicture(picture, imageView);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                onImageClicked(picture);
-            }
-        });
-
+        imageView.setOnClickListener(v -> onImageClicked(picture));
         return imageView;
     }
 

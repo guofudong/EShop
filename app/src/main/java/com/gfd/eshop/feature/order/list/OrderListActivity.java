@@ -20,6 +20,9 @@ import com.gfd.eshop.network.entity.Order;
 
 import butterknife.BindView;
 
+/**
+ * 订单页面
+ */
 public class OrderListActivity extends BaseActivity {
 
     private static final String EXTRA_ORDER_TYPE = "EXTRA_ORDER_TYPE";
@@ -50,16 +53,13 @@ public class OrderListActivity extends BaseActivity {
                 enqueue(apiOrderList);
             }
         };
-
         mOrderAdapter = new OrderAdapter(mOrderType);
         orderListView.setAdapter(mOrderAdapter);
-
         mPtrWrapper.postRefresh(50);
     }
 
     @Override
     protected void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp) {
-
         switch (apiPath) {
             case ApiPath.ORDER_LIST:
                 mPtrWrapper.stopRefresh();
@@ -79,7 +79,6 @@ public class OrderListActivity extends BaseActivity {
             default:
                 throw new UnsupportedOperationException(apiPath);
         }
-
     }
 
     private void initOrderType() {
@@ -111,19 +110,16 @@ public class OrderListActivity extends BaseActivity {
     }
 
     private class OrderAdapter extends OrderListAdapter {
-
-        public OrderAdapter(@ApiOrderList.OrderType String type) {
+        OrderAdapter(@ApiOrderList.OrderType String type) {
             super(type);
         }
-
         @Override protected void onOrderCancel(Order order) {
             mProgressWrapper.showProgress(OrderListActivity.this);
             ApiOrderCancel apiOrderCancel = new ApiOrderCancel(order.getId());
             enqueue(apiOrderCancel);
         }
-
         @Override protected void onOrderPurchase(Order order) {
-
         }
     }
+
 }

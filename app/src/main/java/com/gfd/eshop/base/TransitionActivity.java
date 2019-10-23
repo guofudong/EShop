@@ -11,14 +11,11 @@ import com.gfd.eshop.R;
 
 public abstract class TransitionActivity extends AppCompatActivity {
 
-
     @Override public boolean onOptionsItemSelected(MenuItem item) {
-
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -51,6 +48,6 @@ public abstract class TransitionActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.push_left_in,
                     R.anim.push_left_out);
         }
-
     }
+
 }

@@ -42,29 +42,23 @@ public class ApiSearch implements ApiInterface {
         return Rsp.class;
     }
 
-
     public static class Req extends RequestParam {
         @SerializedName("filter") private Filter mFilter;
-
         @SerializedName("pagination") private Pagination mPagination;
-
         @Override protected int sessionUsage() {
             return SESSION_NO_NEED;
         }
     }
 
     public static class Rsp extends ResponseEntity {
-
         @SerializedName("data") private List<SimpleGoods> mData;
-
         @SerializedName("paginated") private Paginated mPaginated;
-
         public List<SimpleGoods> getData() {
             return mData;
         }
-
         public Paginated getPaginated() {
             return mPaginated;
         }
     }
+
 }

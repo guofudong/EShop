@@ -18,4 +18,5 @@ public class CartBill {
     public int getGoodsCount() {
         return mGoodsCount;
     }
+
 }

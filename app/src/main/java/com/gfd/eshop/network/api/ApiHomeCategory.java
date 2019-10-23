@@ -12,8 +12,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * 首页-商品分类
+ */
 public class ApiHomeCategory implements ApiInterface {
-
 
     @NonNull
     @Override public String getPath() {
@@ -30,12 +32,11 @@ public class ApiHomeCategory implements ApiInterface {
     }
 
     public static class Rsp extends ResponseEntity {
-
         @SerializedName("data")
         private List<CategoryHome> mData;
-
         public List<CategoryHome> getData() {
             return mData;
         }
     }
+
 }

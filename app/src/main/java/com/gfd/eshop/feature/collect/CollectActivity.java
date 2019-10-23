@@ -45,7 +45,6 @@ public class CollectActivity extends BaseActivity {
 
     @Override protected void initView() {
         new ToolbarWrapper(this).setCustomTitle(R.string.collect_title);
-
         mPagination = new Pagination();
         mPtrWrapper = new PtrWrapper(this) {
             @Override public void onRefresh() {
@@ -53,14 +52,12 @@ public class CollectActivity extends BaseActivity {
                 enqueue(apiCollectList);
             }
         };
-
         mGoodsAdapter = new GoodsAdapter();
         recyclerView.setAdapter(mGoodsAdapter);
-
         mLinearLayoutManager = new LinearLayoutManager(this);
         mGridLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLinearLayoutManager);
-
+        //刷新
         mPtrWrapper.postRefresh(50);
     }
 
@@ -88,10 +85,8 @@ public class CollectActivity extends BaseActivity {
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.acitivity_collect, menu);
-
         MenuItem grid = menu.findItem(R.id.menu_grid);
         MenuItem list = menu.findItem(R.id.menu_list);
-
         if (recyclerView.getLayoutManager() instanceof GridLayoutManager) {
             grid.setVisible(false);
             list.setVisible(true);
@@ -99,53 +94,43 @@ public class CollectActivity extends BaseActivity {
             grid.setVisible(true);
             list.setVisible(false);
         }
-
         return true;
     }
 
     @Override public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
-
         if (id == R.id.menu_grid) {
             recyclerView.setLayoutManager(mGridLayoutManager);
             mGoodsAdapter.setType(CollectGoodsAdapter.TYPE_GRID);
             invalidateOptionsMenu();
             return true;
         }
-
         if (id == R.id.menu_list) {
             recyclerView.setLayoutManager(mLinearLayoutManager);
             mGoodsAdapter.setType(CollectGoodsAdapter.TYPE_LIST);
             invalidateOptionsMenu();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     private class GoodsAdapter extends CollectGoodsAdapter {
-
         private AlertWrapper mAlertWrapper;
 
-        public GoodsAdapter() {
-            mAlertWrapper = new AlertWrapper()
-                    .setAlertText(R.string.collect_msg_confirm_delete);
+        GoodsAdapter() {
+            mAlertWrapper = new AlertWrapper().setAlertText(R.string.collect_msg_confirm_delete);
         }
 
         @Override public void onLongClicked(final CollectGoods collectGoods) {
-
-            View.OnClickListener listener = new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    int recId = collectGoods.getRecId();
-                    ApiCollectDelete apiCollectDelete = new ApiCollectDelete(recId);
-                    enqueue(apiCollectDelete);
-                    mAlertWrapper.dismiss();
-                }
+            View.OnClickListener listener = v -> {
+                int recId = collectGoods.getRecId();
+                ApiCollectDelete apiCollectDelete = new ApiCollectDelete(recId);
+                enqueue(apiCollectDelete);
+                mAlertWrapper.dismiss();
             };
-
             mAlertWrapper.setConfirmListener(listener)
                     .showAlert(CollectActivity.this);
         }
     }
+
 }

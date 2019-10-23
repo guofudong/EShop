@@ -38,7 +38,6 @@ public class CategoryFragment extends BaseFragment {
 
     private CategoryAdapter mCategoryAdapter;
     private ChildrenAdapter mChildrenAdapter;
-
     private List<CategoryPrimary> mData;
 
     @Override

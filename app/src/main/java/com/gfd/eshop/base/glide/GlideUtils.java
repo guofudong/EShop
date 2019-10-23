@@ -15,11 +15,19 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import jp.wasabeef.glide.transformations.GrayscaleTransformation;
 
+/**
+ * Glide工具类
+ */
 public class GlideUtils {
 
     private GlideUtils() {
     }
 
+    /**
+     * 加载Banner图片，优先级最高 - IMMEDIATE
+     * @param picture：图片地址数据实体类
+     * @param imageView
+     */
     public static void loadBanner(Picture picture, ImageView imageView) {
         Glide.with(imageView.getContext())
                 .load(picture.getLarge())
@@ -31,13 +39,17 @@ public class GlideUtils {
                 .into(imageView);
     }
 
+    /**
+     *加载图片-高斯模糊
+     * @param picture
+     * @param imageView
+     */
     public static void loadFullPicture(Picture picture, ImageView imageView) {
         Context context = imageView.getContext();
         DrawableRequestBuilder<String> thumbnailRequest = Glide
                 .with(context)
                 .load(picture.getSmall())
                 .bitmapTransform(new BlurTransformation(context, 5));
-
         Glide.with(context)
                 .load(picture.getLarge())
                 .thumbnail(thumbnailRequest)
@@ -49,21 +61,21 @@ public class GlideUtils {
                 .into(imageView);
     }
 
-    public static void loadPromote(Picture picture,
-                                   ImageView imageView,
-                                   int placeholder,
-                                   int maskColor) {
-
+    /**
+     * 加载圆形图片
+     * @param picture
+     * @param imageView
+     * @param placeholder
+     * @param maskColor
+     */
+    public static void loadPromote(Picture picture, ImageView imageView, int placeholder, int maskColor) {
         Context context = imageView.getContext();
-
         DrawableRequestBuilder<String> thumbnailRequest = Glide
                 .with(context)
                 .load(picture.getSmall())
                 .bitmapTransform(new CropCircleTransformation(context),
                         new GrayscaleTransformation(context),
                         new MaskTransformation(context, maskColor));
-
-
         DrawableRequestBuilder<String> pictureRequest = Glide
                 .with(context)
                 .load(picture.getMiddle())
@@ -75,23 +87,21 @@ public class GlideUtils {
                 .bitmapTransform(new CropCircleTransformation(context),
                         new GrayscaleTransformation(context),
                         new MaskTransformation(context, maskColor));
-
         pictureRequest.into(imageView);
-
     }
 
-    public static void loadPicture(Picture picture,
-                                   ImageView imageView) {
-
+    /**
+     * 加载图片
+     * @param picture
+     * @param imageView
+     */
+    public static void loadPicture(Picture picture, ImageView imageView) {
         Context context = imageView.getContext();
-
         DrawableRequestBuilder<String> thumbnailRequest = Glide
                 .with(context)
                 .load(picture.getSmall())
                 .bitmapTransform(new BlurTransformation(context, 5),
                         new TopCropTransformation(context));
-
-
         DrawableRequestBuilder<String> pictureRequest = Glide
                 .with(context)
                 .load(picture.getMiddle())
@@ -101,9 +111,7 @@ public class GlideUtils {
                 .dontAnimate()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .bitmapTransform(new TopCropTransformation(context));
-
         pictureRequest.into(imageView);
-
     }
 
 }

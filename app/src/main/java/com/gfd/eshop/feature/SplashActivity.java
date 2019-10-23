@@ -28,17 +28,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initView() {
         // 渐变动画
-        ivSplash.setAlpha(0.3f);
-        ivSplash.animate()
-                .alpha(1.0f)
-                .setDuration(2000)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        toMainActivity();
-                    }
-                })
-                .start();
+        startAnimate();
     }
 
     @Override
@@ -56,6 +46,21 @@ public class SplashActivity extends BaseActivity {
         Intent intent = new Intent(this, EShopMainActivity.class);
         startActivity(intent);
         finishWithDefaultTransition();
+    }
+
+    /** 启动动画*/
+    private void startAnimate() {
+        ivSplash.setAlpha(0.3f);
+        ivSplash.animate()
+                .alpha(1.0f)
+                .setDuration(2000)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        toMainActivity();
+                    }
+                })
+                .start();
     }
 
 }

@@ -32,7 +32,6 @@ public class ApiAddressList implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -40,9 +39,9 @@ public class ApiAddressList implements ApiInterface {
 
     public static class Rsp extends ResponseEntity {
         @SerializedName("data") private List<Address> mData;
-
         public List<Address> getData() {
             return mData;
         }
     }
+
 }

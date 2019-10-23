@@ -10,8 +10,10 @@ import com.gfd.eshop.network.entity.CategoryBase;
 
 import butterknife.BindView;
 
+/**
+ * 二级分类列表Adapter
+ */
 public class ChildrenAdapter extends BaseListAdapter<CategoryBase, ChildrenAdapter.ViewHolder> {
-
 
     @Override protected int getItemViewLayout() {
         return R.layout.item_children_category;
@@ -33,4 +35,5 @@ public class ChildrenAdapter extends BaseListAdapter<CategoryBase, ChildrenAdapt
             tvCategory.setText(getItem(position).getName());
         }
     }
+
 }

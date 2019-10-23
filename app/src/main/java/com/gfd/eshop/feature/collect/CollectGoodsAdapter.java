@@ -32,17 +32,17 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
-public abstract class CollectGoodsAdapter extends
-        RecyclerView.Adapter<CollectGoodsAdapter.ViewHolder> {
+/**
+ * 收藏商品页面Adapter
+ */
+public abstract class CollectGoodsAdapter extends RecyclerView.Adapter<CollectGoodsAdapter.ViewHolder> {
 
-
-    public static final int TYPE_LIST = R.layout.item_collect_goods_list;
-    public static final int TYPE_GRID = R.layout.item_collect_goods_grid;
+    static final int TYPE_LIST = R.layout.item_collect_goods_list;
+    static final int TYPE_GRID = R.layout.item_collect_goods_grid;
 
     @IntDef({TYPE_LIST, TYPE_GRID})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface Type {
-    }
+    @interface Type { }
 
     @Type private int mType = TYPE_LIST;
 
@@ -59,7 +59,6 @@ public abstract class CollectGoodsAdapter extends
         holder.bind(mDataSet.get(position));
     }
 
-
     @Override public int getItemCount() {
         return mDataSet.size();
     }
@@ -68,7 +67,7 @@ public abstract class CollectGoodsAdapter extends
         return mType;
     }
 
-    public void setType(@Type int type) {
+    void setType(@Type int type) {
         mType = type;
         notifyDataSetChanged();
     }
@@ -90,7 +89,7 @@ public abstract class CollectGoodsAdapter extends
 
         private CollectGoods mItem;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -99,14 +98,12 @@ public abstract class CollectGoodsAdapter extends
             mItem = collectGoods;
             tvName.setText(mItem.getName());
             tvPrice.setText(mItem.getShopPrice());
-
             // 设置商场价格, 并添加删除线
             String marketPrice = mItem.getMarketPrice();
             SpannableString spannableString = new SpannableString(marketPrice);
             spannableString.setSpan(new StrikethroughSpan(), 0, marketPrice.length(),
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             tvMarketPrice.setText(spannableString);
-
             Picture picture = mItem.getImg();
             GlideUtils.loadPicture(picture, ivGoods);
         }
@@ -122,4 +119,5 @@ public abstract class CollectGoodsAdapter extends
             return true;
         }
     }
+
 }

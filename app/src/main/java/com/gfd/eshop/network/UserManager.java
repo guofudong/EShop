@@ -21,37 +21,41 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
+/**
+ * 用户信息管理
+ */
 public class UserManager implements IUserManager {
 
     private static IUserManager sInstance = new UserManager();
+
+    private EShopClient mClient = EShopClient.getInstance();
+    private EventBus mBus = EventBus.getDefault();
+    private Session mSession;
+    private User mUser;
+    private List<CartGoods> mCartGoodsList;
+    private CartBill mCartBill;
+    private List<Address> mAddressList;
 
     public static IUserManager getInstance() {
         return sInstance;
     }
 
-    private EShopClient mClient = EShopClient.getInstance();
-
-    private EventBus mBus = EventBus.getDefault();
-
-    private Session mSession;
-
-    private User mUser;
-
-    private List<CartGoods> mCartGoodsList;
-
-    private CartBill mCartBill;
-
-    private List<Address> mAddressList;
-
+    /**
+     * 设置用户信息
+     * @param user
+     * @param session
+     */
     @Override public void setUser(@NonNull User user, @NonNull Session session) {
         mUser = user;
         mSession = session;
-
         mBus.postSticky(new UserEvent());
         retrieveCartList();
         retrieveAddressList();
     }
 
+    /**
+     * 恢复用户信息
+     */
     @Override public void retrieveUserInfo() {
         ApiUserInfo apiUserInfo = new ApiUserInfo();
         UiCallback callback = new UiCallback() {
@@ -67,25 +71,28 @@ public class UserManager implements IUserManager {
         mClient.enqueue(apiUserInfo, callback, getClass().getSimpleName());
     }
 
+    /**
+     * 恢复购物车数据
+     */
     @Override public void retrieveCartList() {
         ApiCartList apiCartList = new ApiCartList();
         UiCallback cb = new UiCallback() {
             @Override
             public void onBusinessResponse(boolean success, ResponseEntity rsp) {
-
                 if (success) {
                     ApiCartList.Rsp listRsp = (ApiCartList.Rsp) rsp;
                     mCartGoodsList = listRsp.getData().getGoodsList();
                     mCartBill = listRsp.getData().getCartBill();
                 }
-
                 mBus.postSticky(new CartEvent());
             }
         };
-
         mClient.enqueue(apiCartList, cb, getClass().getSimpleName());
     }
 
+    /**
+     * 恢复收货地址数据
+     */
     @Override public void retrieveAddressList() {
         ApiAddressList apiAddressList = new ApiAddressList();
         UiCallback uiCallback = new UiCallback() {
@@ -101,6 +108,10 @@ public class UserManager implements IUserManager {
         mClient.enqueue(apiAddressList, uiCallback, getClass().getSimpleName());
     }
 
+    /**
+     * 获取默认的收货地址
+     * @return
+     */
     @Override public Address getDefaultAddress() {
         if (hasAddress()) {
             for (Address address : mAddressList) {
@@ -110,14 +121,13 @@ public class UserManager implements IUserManager {
         return null;
     }
 
+    /** 清空用户数据*/
     @Override public void clear() {
         mUser = null;
         mSession = null;
         mCartBill = null;
         mCartGoodsList = null;
-
         mClient.cancelByTag(getClass().getSimpleName());
-
         mBus.postSticky(new UserEvent());
         mBus.postSticky(new CartEvent());
         mBus.postSticky(new AddressEvent());

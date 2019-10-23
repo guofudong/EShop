@@ -1,9 +1,10 @@
 package com.gfd.eshop.feature.settings;
 
 
-import android.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.fragment.app.FragmentTransaction;
 
 import com.gfd.eshop.R;
 import com.gfd.eshop.base.BaseActivity;
@@ -15,6 +16,9 @@ import com.gfd.eshop.network.event.UserEvent;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 设置页面
+ */
 public class SettingsActivity extends BaseActivity {
 
     @BindView(R.id.button_sign_out) Button btnSignOut;
@@ -25,20 +29,17 @@ public class SettingsActivity extends BaseActivity {
 
     @Override protected void initView() {
         new ToolbarWrapper(this).setCustomTitle(R.string.settings_title);
-
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.container, new SettingsFragment());
         transaction.commit();
     }
 
     @Override
     protected void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp) {
-
     }
 
     @Override public void onEvent(UserEvent event) {
         super.onEvent(event);
-
         if (UserManager.getInstance().hasUser()) {
             btnSignOut.setVisibility(View.VISIBLE);
         } else {
@@ -50,4 +51,5 @@ public class SettingsActivity extends BaseActivity {
         UserManager.getInstance().clear();
         finish();
     }
+
 }

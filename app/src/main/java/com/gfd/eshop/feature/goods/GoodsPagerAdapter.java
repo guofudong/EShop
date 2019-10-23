@@ -16,13 +16,12 @@ public class GoodsPagerAdapter extends FragmentPagerAdapter {
 
     private GoodsInfo mGoodsInfo;
 
-    public GoodsPagerAdapter(FragmentManager fm, GoodsInfo goodsInfo) {
+    GoodsPagerAdapter(FragmentManager fm, GoodsInfo goodsInfo) {
         super(fm);
         this.mGoodsInfo = goodsInfo;
     }
 
     @Override public Fragment getItem(int position) {
-
         switch (position) {
             case 0:
                 return GoodsInfoFragment.newInstance(mGoodsInfo);
@@ -38,4 +37,5 @@ public class GoodsPagerAdapter extends FragmentPagerAdapter {
     @Override public int getCount() {
         return 3;
     }
+
 }

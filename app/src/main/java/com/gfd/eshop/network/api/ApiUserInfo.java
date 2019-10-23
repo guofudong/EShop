@@ -10,6 +10,9 @@ import com.gfd.eshop.network.core.ResponseEntity;
 import com.gfd.eshop.network.entity.User;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * 获取用户信息
+ */
 public class ApiUserInfo implements ApiInterface {
 
     @NonNull
@@ -27,7 +30,6 @@ public class ApiUserInfo implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -35,9 +37,9 @@ public class ApiUserInfo implements ApiInterface {
 
     public static class Rsp extends ResponseEntity {
         @SerializedName("data") private User mUser;
-
         public User getUser() {
             return mUser;
         }
     }
+
 }

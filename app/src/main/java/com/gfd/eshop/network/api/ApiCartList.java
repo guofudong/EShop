@@ -17,6 +17,7 @@ import java.util.List;
  * 服务器接口: 购物车列表.
  */
 public class ApiCartList implements ApiInterface {
+
     @NonNull
     @Override public String getPath() {
         return ApiPath.CART_LIST;
@@ -32,7 +33,6 @@ public class ApiCartList implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -41,23 +41,20 @@ public class ApiCartList implements ApiInterface {
     public static class Rsp extends ResponseEntity {
 
         @SerializedName("data") Data mData;
-
         public Data getData() {
             return mData;
         }
 
         public static class Data {
             @SerializedName("goods_list") private List<CartGoods> mGoodsList;
-
             @SerializedName("total") private CartBill mCartBill;
-
             public List<CartGoods> getGoodsList() {
                 return mGoodsList;
             }
-
             public CartBill getCartBill() {
                 return mCartBill;
             }
         }
     }
+
 }

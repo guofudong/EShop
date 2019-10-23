@@ -8,6 +8,9 @@ import com.gfd.eshop.R;
 import com.gfd.eshop.base.BaseActivity;
 import com.gfd.eshop.network.core.ResponseEntity;
 
+/**
+ * 购物车页面
+ */
 public class CartActivity extends BaseActivity {
 
     private static final String CART_FRAGMENT_TAG = CartFragment.class.getSimpleName();
@@ -27,4 +30,5 @@ public class CartActivity extends BaseActivity {
     @Override
     protected void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp) {
     }
+
 }

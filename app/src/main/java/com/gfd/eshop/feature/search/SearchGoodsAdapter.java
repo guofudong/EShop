@@ -16,9 +16,10 @@ import com.gfd.eshop.network.entity.SimpleGoods;
 
 import butterknife.BindView;
 
-public class SearchGoodsAdapter extends
-        BaseListAdapter<SimpleGoods, SearchGoodsAdapter.ViewHolder> {
-
+/**
+ * 搜索商品Adapter
+ */
+public class SearchGoodsAdapter extends BaseListAdapter<SimpleGoods, SearchGoodsAdapter.ViewHolder> {
 
     @Override protected int getItemViewLayout() {
         return R.layout.item_search_goods;
@@ -45,16 +46,14 @@ public class SearchGoodsAdapter extends
             mItem = getItem(position);
             tvName.setText(mItem.getName());
             tvPrice.setText(mItem.getShopPrice());
-
             // 设置商场价格, 并添加删除线
             String marketPrice = mItem.getMarketPrice();
             SpannableString spannableString = new SpannableString(marketPrice);
-            spannableString.setSpan(new StrikethroughSpan(), 0, marketPrice.length(),
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new StrikethroughSpan(), 0, marketPrice.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             tvMarketPrice.setText(spannableString);
-
             Picture picture = mItem.getImg();
             GlideUtils.loadPicture(picture, ivGoods);
         }
     }
+
 }

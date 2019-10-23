@@ -106,7 +106,7 @@ public class OrderPreviewActivity extends BaseActivity {
 
                             }
                         })
-                        .setCancelLisener(new View.OnClickListener() {
+                        .setCancelListener(new View.OnClickListener() {
                             @Override public void onClick(View v) {
                                 finish();
                             }

@@ -13,7 +13,6 @@ public class Paginated {
 
     @SerializedName("more") private int mMore; // 是否还有更多 (1为是, 0为否)
 
-
     public int getTotal() {
         return mTotal;
     }

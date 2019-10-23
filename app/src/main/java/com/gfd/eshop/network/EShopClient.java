@@ -1,7 +1,5 @@
 package com.gfd.eshop.network;
 
-import android.util.Log;
-
 import com.gfd.eshop.network.core.ApiInterface;
 import com.gfd.eshop.network.core.ResponseEntity;
 import com.gfd.eshop.network.core.UiCallback;
@@ -21,21 +19,24 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 public class EShopClient {
 
-    public static final String BASE_URL = "https://www.fastmock.site/mock/f9c998b9cc741ac815efc2c8d1e09f5c/shop/";
+    private static final String BASE_URL = "https://www.fastmock.site/mock/f9c998b9cc741ac815efc2c8d1e09f5c/shop/";
 
     private static EShopClient sInstance;
 
+    private final OkHttpClient mOkHttpClient;
+    private final Gson mGson;
+    private boolean mShowLog = false;
+
+    /**
+     * 获取实例
+     * @return
+     */
     public static EShopClient getInstance() {
         if (sInstance == null) {
             sInstance = new EShopClient();
         }
         return sInstance;
     }
-
-    private final OkHttpClient mOkHttpClient;
-    private final Gson mGson;
-
-    private boolean mShowLog = false;
 
     private EShopClient() {
         mGson = new Gson();
@@ -44,7 +45,6 @@ public class EShopClient {
         mOkHttpClient = new OkHttpClient.Builder()
                 .addNetworkInterceptor(mLoggingInterceptor)
                 .build();
-
     }
 
     /**
@@ -55,9 +55,7 @@ public class EShopClient {
      * @return 响应数据实体.
      * @throws IOException 请求被取消, 连接超时, 失败的响应码等等.
      */
-    public <T extends ResponseEntity> T execute(ApiInterface apiInterface)
-            throws IOException {
-
+    public <T extends ResponseEntity> T execute(ApiInterface apiInterface) throws IOException {
         Response response = newApiCall(apiInterface, null).execute();
         //noinspection unchecked
         Class<T> entityClass = (Class<T>) apiInterface.getResponseType();
@@ -78,8 +76,11 @@ public class EShopClient {
         return call;
     }
 
+    /**
+     * 取消请求
+     * @param tag：请求tag
+     */
     public void cancelByTag(String tag) {
-        // A call may transition from queue -> running. Remove queued Calls first.
         for (Call call : mOkHttpClient.dispatcher().queuedCalls()) {
             if (call.request().tag().equals(tag))
                 call.cancel();
@@ -90,10 +91,22 @@ public class EShopClient {
         }
     }
 
-    public void setShowLog(boolean showLog) {
+    /**
+     * 是否输出日志
+     * @param showLog
+     */
+    void setShowLog(boolean showLog) {
         mShowLog = showLog;
     }
 
+    /**
+     * 获取响应数据实体类
+     * @param response：请求响应
+     * @param clazz：实体类类型class
+     * @param <T>
+     * @return
+     * @throws IOException
+     */
     public <T extends ResponseEntity> T getResponseEntity(Response response, Class<T> clazz)
             throws IOException {
         if (!response.isSuccessful()) {
@@ -102,10 +115,15 @@ public class EShopClient {
         return mGson.fromJson(response.body().charStream(), clazz);
     }
 
+    /**
+     * 构建请求
+     * @param apiInterface
+     * @param tag
+     * @return
+     */
     private Call newApiCall(ApiInterface apiInterface, String tag) {
         Request.Builder builder = new Request.Builder();
         builder.url(BASE_URL + apiInterface.getPath());
-
         if (apiInterface.getRequestParam() != null) {
             String param = mGson.toJson(apiInterface.getRequestParam());
             FormBody formBody = new FormBody.Builder()

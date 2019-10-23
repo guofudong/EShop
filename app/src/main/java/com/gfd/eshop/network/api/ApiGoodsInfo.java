@@ -22,7 +22,6 @@ public class ApiGoodsInfo implements ApiInterface {
         mReq.mGoodsId = goodsId;
     }
 
-
     @NonNull
     @Override public String getPath() {
         return ApiPath.GOODS;
@@ -38,22 +37,19 @@ public class ApiGoodsInfo implements ApiInterface {
     }
 
     private static class Req extends RequestParam {
-
         @SerializedName("goods_id")
         private int mGoodsId;
-
         @Override protected int sessionUsage() {
             return SESSION_OPTIONAL;
         }
     }
 
     public static class Rsp extends ResponseEntity {
-
         @SerializedName("data")
         private GoodsInfo mData;
-
         public GoodsInfo getData() {
             return mData;
         }
     }
+
 }

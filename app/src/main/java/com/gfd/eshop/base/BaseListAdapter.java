@@ -39,21 +39,27 @@ public abstract class BaseListAdapter<T, V extends BaseListAdapter.ViewHolder> e
     }
 
     @Override public final View getView(int position, View convertView, ViewGroup parent) {
-
         View itemView = createItemViewIfNotExist(convertView, parent);
-
         // noinspection unchecked
         ViewHolder viewHolder = (ViewHolder) itemView.getTag();
         viewHolder.bind(position);
         return itemView;
     }
 
+    /**
+     * 更新数据
+     * @param data
+     */
     public void reset(@Nullable List<T> data) {
         mDataSet.clear();
         if (data != null) mDataSet.addAll(data);
         notifyDataSetChanged();
     }
 
+    /**
+     * 添加数据
+     * @param data
+     */
     public void addAll(@Nullable List<T> data) {
         if (data != null) mDataSet.addAll(data);
         notifyDataSetChanged();
@@ -66,8 +72,7 @@ public abstract class BaseListAdapter<T, V extends BaseListAdapter.ViewHolder> e
 
     private View createItemViewIfNotExist(View itemView, ViewGroup parent) {
         if (itemView == null) {
-            itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(getItemViewLayout(), parent, false);
+            itemView = LayoutInflater.from(parent.getContext()).inflate(getItemViewLayout(), parent, false);
             itemView.setTag(getItemViewHolder(itemView));
         }
         return itemView;
@@ -75,7 +80,7 @@ public abstract class BaseListAdapter<T, V extends BaseListAdapter.ViewHolder> e
 
     public abstract class ViewHolder {
 
-        protected final View mItemView;
+        final View mItemView;
 
         protected ViewHolder(View itemView) {
             ButterKnife.bind(this, itemView);
@@ -86,6 +91,10 @@ public abstract class BaseListAdapter<T, V extends BaseListAdapter.ViewHolder> e
             return mItemView.getContext();
         }
 
+        /**
+         * 设置item数据
+         * @param position
+         */
         protected abstract void bind(int position);
     }
 

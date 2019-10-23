@@ -37,9 +37,7 @@ public class ApiCartDelete implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @SerializedName("rec_id") int mRecId;
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -47,9 +45,9 @@ public class ApiCartDelete implements ApiInterface {
 
     public static class Rsp extends ResponseEntity {
         @SerializedName("total") private CartBill mCartBill;
-
         public CartBill getCartBill() {
             return mCartBill;
         }
     }
+
 }

@@ -18,4 +18,5 @@ public class CategoryBase {
     public String getName() {
         return mName;
     }
+
 }

@@ -17,22 +17,22 @@ import com.google.gson.Gson;
 
 import butterknife.BindView;
 
+/**
+ * 商品详情页面
+ */
 public class GoodsDetailsFragment extends BaseFragment {
 
     private static final String ARGUMENT_GOODS_INFO = "ARGUMENT_GOODS_INFO";
 
     public static GoodsDetailsFragment newInstance(GoodsInfo goodsInfo) {
-
         Bundle args = new Bundle();
         args.putString(ARGUMENT_GOODS_INFO, new Gson().toJson(goodsInfo));
-
         GoodsDetailsFragment fragment = new GoodsDetailsFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     @BindView(R.id.web_view) WebView webView;
-
     private GoodsInfo mGoodsInfo;
 
     @Override protected int getContentViewLayout() {
@@ -41,11 +41,8 @@ public class GoodsDetailsFragment extends BaseFragment {
 
     @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface"})
     @Override protected void initView() {
-
         // 获取传入的商品信息实体
-        mGoodsInfo = new Gson().fromJson(getArguments().getString(ARGUMENT_GOODS_INFO),
-                GoodsInfo.class);
-
+        mGoodsInfo = new Gson().fromJson(getArguments().getString(ARGUMENT_GOODS_INFO), GoodsInfo.class);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setUseWideViewPort(true);
@@ -57,17 +54,13 @@ public class GoodsDetailsFragment extends BaseFragment {
 
     @Override
     protected void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp) {
-
     }
 
-
     public class WebViewInterface {
-
         @JavascriptInterface
         public String getGoodsName() {
             return mGoodsInfo.getName();
         }
-
         @JavascriptInterface
         public void makePhoneCall(String tel) {
             Intent intent = new Intent(Intent.ACTION_DIAL);

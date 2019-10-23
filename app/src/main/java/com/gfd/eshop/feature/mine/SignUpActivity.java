@@ -49,15 +49,11 @@ public class SignUpActivity extends BaseActivity {
         if (!ApiPath.USER_SIGNUP.equals(apiPath)) {
             throw new UnsupportedOperationException(apiPath);
         }
-
         mProgressWrapper.dismissProgress();
         if (success) {
             ToastWrapper.show(R.string.mine_msg_sign_up_success);
             ApiSignUp.Rsp signUpRsp = (ApiSignUp.Rsp) rsp;
-            UserManager.getInstance().setUser(
-                    signUpRsp.getData().getUser(),
-                    signUpRsp.getData().getSession()
-            );
+            UserManager.getInstance().setUser(signUpRsp.getData().getUser(), signUpRsp.getData().getSession());
             finish();
         }
     }
@@ -66,7 +62,6 @@ public class SignUpActivity extends BaseActivity {
         mUsername = etName.getText().toString();
         mEmail = etEmail.getText().toString();
         mPassword = etPassword.getText().toString();
-
         // 简单的注册条件判断: 用户名, 邮箱和密码不能为空.
         if (TextUtils.isEmpty(mUsername)
                 || TextUtils.isEmpty(mEmail)
@@ -83,4 +78,5 @@ public class SignUpActivity extends BaseActivity {
         ApiSignUp apiSignUp = new ApiSignUp(mUsername, mEmail, Sha256Utils.bin2hex(mPassword));
         enqueue(apiSignUp);
     }
+
 }

@@ -59,7 +59,6 @@ public class CartFragment extends BaseFragment {
 
     @Override protected void initView() {
         new ToolbarWrapper(this).setCustomTitle(R.string.cart_title);
-
         mGoodsAdapter = new CartGoodsAdapter() {
             @Override public void numberChanged(CartGoods goods, int number) {
                 // 更新购物车中的商品数量.
@@ -70,7 +69,6 @@ public class CartFragment extends BaseFragment {
         };
         mGoodsAdapter.reset(UserManager.getInstance().getCartGoodsList());
         cartListView.setAdapter(mGoodsAdapter);
-
         mPtrWrapper = new PtrWrapper(this) {
             @Override public void onRefresh() {
                 if (UserManager.getInstance().hasUser()) {
@@ -84,7 +82,6 @@ public class CartFragment extends BaseFragment {
 
     @Override
     protected void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp) {
-
         switch (apiPath) {
             case ApiPath.CART_DELETE:
             case ApiPath.CART_UPDATE:
@@ -143,15 +140,12 @@ public class CartFragment extends BaseFragment {
         // 弹出删除商品对话框.
         final CartGoods cartGoods = mGoodsAdapter.getItem(position);
         mAlertWrapper.setAlertText(R.string.cart_msg_delete_goods)
-                .setConfirmListener(new View.OnClickListener() {
-                    @Override public void onClick(View v) {
-                        mAlertWrapper.dismiss();
-
-                        // 从购物车中删除商品
-                        mProgressWrapper.showProgress(CartFragment.this);
-                        ApiCartDelete apiCartDelete = new ApiCartDelete(cartGoods.getRecId());
-                        enqueue(apiCartDelete);
-                    }
+                .setConfirmListener(v -> {
+                    mAlertWrapper.dismiss();
+                    // 从购物车中删除商品
+                    mProgressWrapper.showProgress(CartFragment.this);
+                    ApiCartDelete apiCartDelete = new ApiCartDelete(cartGoods.getRecId());
+                    enqueue(apiCartDelete);
                 })
                 .showAlert(this);
         return true;

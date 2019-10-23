@@ -62,4 +62,5 @@ public class GoodsInfo {
     public boolean isCollected() {
         return mCollected == 1;
     }
+
 }

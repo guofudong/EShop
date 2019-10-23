@@ -32,4 +32,5 @@ public class Pagination {
     public int getCount() {
         return mCount;
     }
+
 }

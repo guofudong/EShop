@@ -25,6 +25,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 商品属性弹窗
+ */
 public class GoodsSpecPopupWindow extends PopupWindow implements PopupWindow.OnDismissListener {
 
     @BindView(R.id.image_goods) ImageView ivGoods;
@@ -39,13 +42,12 @@ public class GoodsSpecPopupWindow extends PopupWindow implements PopupWindow.OnD
 
     private OnConfirmListener mConfirmListener;
 
-    public GoodsSpecPopupWindow(BaseActivity activity, @NonNull GoodsInfo goodsInfo) {
+    GoodsSpecPopupWindow(BaseActivity activity, @NonNull GoodsInfo goodsInfo) {
         mActivity = activity;
         mGoodsInfo = goodsInfo;
         mParent = (ViewGroup) activity.getWindow().getDecorView();
         Context context = mParent.getContext();
-        View view = LayoutInflater.from(activity)
-                .inflate(R.layout.popup_goods_spec, mParent, false);
+        View view = LayoutInflater.from(activity).inflate(R.layout.popup_goods_spec, mParent, false);
 
         setContentView(view);
         setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
@@ -68,7 +70,6 @@ public class GoodsSpecPopupWindow extends PopupWindow implements PopupWindow.OnD
         backgroundAlpha(0.6f);
     }
 
-
     @Override public void onDismiss() {
         backgroundAlpha(1.0f);
         mConfirmListener = null;
@@ -76,7 +77,6 @@ public class GoodsSpecPopupWindow extends PopupWindow implements PopupWindow.OnD
 
     @OnClick(R.id.button_ok) void onClick() {
         int number = numberPicker.getNumber();
-
         if (number == 0) {
             ToastWrapper.show(R.string.goods_msg_must_choose_number);
             return;
@@ -94,15 +94,11 @@ public class GoodsSpecPopupWindow extends PopupWindow implements PopupWindow.OnD
         GlideUtils.loadPicture(mGoodsInfo.getImg(), ivGoods);
         tvPrice.setText(mGoodsInfo.getShopPrice());
         tvInventory.setText(String.valueOf(mGoodsInfo.getNumber()));
-
-        numberPicker.setOnNumberChangedListener(new SimpleNumberPicker.OnNumberChangedListener() {
-            @Override public void onNumberChanged(int number) {
-                tvNumber.setText(String.valueOf(number));
-            }
-        });
+        numberPicker.setOnNumberChangedListener(number -> tvNumber.setText(String.valueOf(number)));
     }
 
     public interface OnConfirmListener {
         void onConfirm(int number);
     }
+
 }

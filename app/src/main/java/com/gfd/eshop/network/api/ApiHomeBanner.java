@@ -18,7 +18,6 @@ import java.util.List;
  */
 public class ApiHomeBanner implements ApiInterface {
 
-
     @NonNull
     @Override public String getPath() {
         return ApiPath.HOME_DATA;
@@ -40,15 +39,11 @@ public class ApiHomeBanner implements ApiInterface {
         public Data getData() { return mData; }
 
         public static class Data {
-
             @SerializedName("player") private List<Banner> mBanners;
-
             @SerializedName("promote_goods") private List<SimpleGoods> mGoodsList;
-
             public List<Banner> getBanners() {
                 return mBanners;
             }
-
             public List<SimpleGoods> getGoodsList() {
                 return mGoodsList;
             }

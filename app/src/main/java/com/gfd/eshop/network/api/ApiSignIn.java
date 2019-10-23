@@ -42,16 +42,13 @@ public class ApiSignIn implements ApiInterface {
     public static class Req extends RequestParam {
         @SerializedName("name") private String mName;
         @SerializedName("password") private String mPassword;
-
         @Override protected int sessionUsage() {
             return SESSION_NO_NEED;
         }
     }
 
     public static class Rsp extends ResponseEntity {
-
         @SerializedName("data") Data mData;
-
         public Data getData() {
             return mData;
         }
@@ -59,14 +56,13 @@ public class ApiSignIn implements ApiInterface {
         public static class Data {
             @SerializedName("session") private Session mSession;
             @SerializedName("user") private User mUser;
-
             public Session getSession() {
                 return mSession;
             }
-
             public User getUser() {
                 return mUser;
             }
         }
     }
+
 }

@@ -30,4 +30,5 @@ public class OrderInfo {
     public String getDesc() {
         return mDesc;
     }
+
 }

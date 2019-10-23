@@ -32,11 +32,10 @@ public class ApiCategory implements ApiInterface {
     }
 
     public static class Rsp extends ResponseEntity {
-
         @SerializedName("data") private List<CategoryPrimary> mData;
-
         public List<CategoryPrimary> getData() {
             return mData;
         }
     }
+
 }

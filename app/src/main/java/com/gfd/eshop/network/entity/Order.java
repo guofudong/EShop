@@ -48,4 +48,5 @@ public class Order {
     public String getShippingFee() {
         return mShippingFee;
     }
+
 }

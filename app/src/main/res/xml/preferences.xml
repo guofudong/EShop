@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
         android:layout="@layout/partial_pref_category"
         android:title="@string/settings_category_app">
         <CheckBoxPreference
+            android:defaultValue="true"
             android:key="key_pre_auto_signin"
-            android:defaultValue="true"
-            android:title="@string/settings_pref_auto_signin"/>
+            android:title="@string/settings_pref_auto_signin"
+            app:iconSpaceReserved="false" />
         <CheckBoxPreference
+            android:defaultValue="true"
             android:key="key_pref_not_exit"
-            android:defaultValue="true"
-            android:title="@string/settings_pref_not_exit"/>
+            android:title="@string/settings_pref_not_exit"
+            app:iconSpaceReserved="false" />
         <CheckBoxPreference
-            android:key="key_pref_show_big_picture"
             android:defaultValue="true"
-            android:title="@string/settings_pref_show_full_picture"/>
+            android:key="key_pref_show_big_picture"
+            android:title="@string/settings_pref_show_full_picture"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
 
     <PreferenceCategory
         android:layout="@layout/partial_pref_category"
         android:title="@string/settings_category_about">
-        <Preference android:title="@string/settings_pref_official_website">
-            <intent android:action="android.intent.action.VIEW"
-                    android:data="http://www.baidu.com"/>
+        <Preference
+            android:title="@string/settings_pref_official_website"
+            app:iconSpaceReserved="false">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.baidu.com" />
         </Preference>
-        <Preference android:title="@string/settings_pref_custom_service_tel">
-            <intent android:action="android.intent.action.DIAL"
-                    android:data="tel:10086"/>
+        <Preference
+            android:title="@string/settings_pref_custom_service_tel"
+            app:iconSpaceReserved="false">
+            <intent
+                android:action="android.intent.action.DIAL"
+                android:data="tel:10086" />
         </Preference>
     </PreferenceCategory>
 

@@ -40,4 +40,5 @@ public class OrderGoods {
     public Picture getImg() {
         return mImg;
     }
+
 }

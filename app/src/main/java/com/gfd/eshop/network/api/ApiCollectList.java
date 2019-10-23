@@ -41,9 +41,7 @@ public class ApiCollectList implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @SerializedName("pagination") private Pagination mPagination;
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -52,13 +50,12 @@ public class ApiCollectList implements ApiInterface {
     public static class Rsp extends ResponseEntity {
         @SerializedName("paginated") private Paginated mPaginated;
         @SerializedName("data") private List<CollectGoods> mGoodsList;
-
         public Paginated getPaginated() {
             return mPaginated;
         }
-
         public List<CollectGoods> getGoodsList() {
             return mGoodsList;
         }
     }
+
 }

@@ -42,4 +42,5 @@ public class CartGoods {
     public String getTotalPrice() {
         return mTotalPrice;
     }
+
 }

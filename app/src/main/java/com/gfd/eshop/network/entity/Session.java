@@ -18,4 +18,5 @@ public class Session {
     public String getSid() {
         return mSid;
     }
+
 }

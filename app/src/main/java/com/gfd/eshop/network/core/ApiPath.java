@@ -29,4 +29,5 @@ public interface ApiPath {
     String USER_SIGNIN = "/user/signin";
     String USER_SIGNUP = "/user/signup";
     String USER_INFO = "/user/info";
+
 }

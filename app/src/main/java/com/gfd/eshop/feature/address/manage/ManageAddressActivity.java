@@ -44,7 +44,6 @@ public class ManageAddressActivity extends BaseActivity {
     @Override protected void initView() {
         new ToolbarWrapper(this).setCustomTitle(R.string.address_title_manage);
         mProgressWrapper = new ProgressWrapper();
-
         mAddressAdapter = new AddressAdapterImpl();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAddressAdapter);
@@ -52,8 +51,6 @@ public class ManageAddressActivity extends BaseActivity {
 
     @Override
     protected void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp) {
-
-
         switch (apiPath) {
             case ApiPath.ADDRESS_DEFAULT:
             case ApiPath.ADDRESS_DELETE:
@@ -65,7 +62,6 @@ public class ManageAddressActivity extends BaseActivity {
                 break;
             case ApiPath.ADDRESS_INFO:
                 mProgressWrapper.dismissProgress();
-
                 if (success) {
                     ApiAddressInfo.Rsp infoRsp = (ApiAddressInfo.Rsp) rsp;
                     Intent intent = EditAddressActivity.getStartIntent(this, infoRsp.getData());
@@ -75,7 +71,6 @@ public class ManageAddressActivity extends BaseActivity {
             default:
                 throw new UnsupportedOperationException(apiPath);
         }
-
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
@@ -101,7 +96,6 @@ public class ManageAddressActivity extends BaseActivity {
                 ToastWrapper.show(R.string.address_msg_can_not_delete_default);
                 return;
             }
-
             mProgressWrapper.showProgress(ManageAddressActivity.this);
             ApiAddressDelete apiAddressDelete = new ApiAddressDelete(address.getId());
             enqueue(apiAddressDelete);
@@ -113,4 +107,5 @@ public class ManageAddressActivity extends BaseActivity {
             enqueue(apiAddressInfo);
         }
     }
+
 }

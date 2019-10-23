@@ -26,4 +26,5 @@ public class Banner {
     public String getUrl() {
         return mUrl;
     }
+
 }

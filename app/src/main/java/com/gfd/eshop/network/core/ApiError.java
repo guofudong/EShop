@@ -21,7 +21,5 @@ package com.gfd.eshop.network.core;
  * 10009=>'订单无发货信息'
  */
 public interface ApiError {
-
     int SESSION_EXPIRE = 100;
-
 }

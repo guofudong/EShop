@@ -9,6 +9,9 @@ import com.gfd.eshop.network.core.RequestParam;
 import com.gfd.eshop.network.core.ResponseEntity;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * 取消订单
+ */
 public class ApiOrderCancel implements ApiInterface {
 
     private final Req mReq;
@@ -33,9 +36,7 @@ public class ApiOrderCancel implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @SerializedName("order_id") private int mOrderId;
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -43,4 +44,5 @@ public class ApiOrderCancel implements ApiInterface {
 
     public static class Rsp extends ResponseEntity {
     }
+
 }

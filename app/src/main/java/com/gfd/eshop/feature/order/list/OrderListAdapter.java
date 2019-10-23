@@ -1,6 +1,7 @@
 package com.gfd.eshop.feature.order.list;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +24,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 订单列表适配器
+ */
 public abstract class OrderListAdapter extends BaseListAdapter<Order, OrderListAdapter.ViewHolder> {
 
     @ApiOrderList.OrderType private final String mType;
 
-    public OrderListAdapter(@ApiOrderList.OrderType String type) {
+    OrderListAdapter(@ApiOrderList.OrderType String type) {
         mType = type;
     }
 
@@ -56,7 +60,6 @@ public abstract class OrderListAdapter extends BaseListAdapter<Order, OrderListA
 
         ViewHolder(View itemView) {
             super(itemView);
-
             switch (mType) {
                 case ApiOrderList.ORDER_AWAIT_PAY:
                     btnCancel.setVisibility(View.VISIBLE);
@@ -70,21 +73,16 @@ public abstract class OrderListAdapter extends BaseListAdapter<Order, OrderListA
 
         @Override protected void bind(int position) {
             mOrder = getItem(position);
-
             String orderSn = getContext().getString(R.string.order_sn, mOrder.getSn());
             tvOrderSn.setText(orderSn);
-
             String orderTime = getContext().getString(R.string.order_time, mOrder.getTime());
             tvOrderTime.setText(orderTime);
-
             String subTotal = getContext().getString(R.string.order_total, mOrder.getTotalFee());
             tvSubtotal.setText(subTotal);
-
             goodsLayout.removeAllViews();
             List<OrderGoods> goodsList = mOrder.getGoodsList();
             for (OrderGoods goods : goodsList) {
-                View view = LayoutInflater.from(getContext())
-                        .inflate(R.layout.item_order_list_goods, goodsLayout, false);
+                View view = LayoutInflater.from(getContext()).inflate(R.layout.item_order_list_goods, goodsLayout, false);
                 GoodsItemHolder holder = new GoodsItemHolder(view);
                 holder.bind(goods);
                 goodsLayout.addView(view);
@@ -105,11 +103,10 @@ public abstract class OrderListAdapter extends BaseListAdapter<Order, OrderListA
             @BindView(R.id.image_goods) ImageView ivGoods;
 
             private OrderGoods mOrderGoods;
-
-            public GoodsItemHolder(View view) {
+            GoodsItemHolder(View view) {
                 ButterKnife.bind(this, view);
             }
-
+            @SuppressLint("StringFormatMatches")
             public void bind(OrderGoods orderGoods) {
                 mOrderGoods = orderGoods;
                 tvName.setText(orderGoods.getGoodsName());
@@ -117,7 +114,6 @@ public abstract class OrderListAdapter extends BaseListAdapter<Order, OrderListA
                 tvAmount.setText(getContext().getString(R.string.order_goods_amount, number));
                 GlideUtils.loadPicture(mOrderGoods.getImg(), ivGoods);
             }
-
             @OnClick void onClick() {
                 Intent intent = GoodsActivity
                         .getStartIntent(getContext(), mOrderGoods.getGoodsId());
@@ -125,6 +121,5 @@ public abstract class OrderListAdapter extends BaseListAdapter<Order, OrderListA
             }
         }
     }
-
 
 }

@@ -22,7 +22,6 @@ import okhttp3.ResponseBody;
  */
 public abstract class UiCallback implements Callback {
 
-
     /**
      * 主线程中的Handler
      */

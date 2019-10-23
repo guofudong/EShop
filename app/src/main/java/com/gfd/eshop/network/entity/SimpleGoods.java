@@ -26,7 +26,6 @@ public class SimpleGoods {
 
     public int getId() {
         if (mId != 0) return mId;
-
         return mGoodsId;
     }
 
@@ -53,4 +52,5 @@ public class SimpleGoods {
     public Picture getImg() {
         return mImg;
     }
+
 }

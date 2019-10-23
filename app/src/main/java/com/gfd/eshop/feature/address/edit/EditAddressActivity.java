@@ -48,7 +48,6 @@ public class EditAddressActivity extends BaseActivity {
         return intent;
     }
 
-
     @BindView(R.id.edit_consignee) EditText etConsignee;
     @BindView(R.id.edit_tel) EditText etTel;
     @BindView(R.id.edit_detail) EditText etDetail;
@@ -88,11 +87,7 @@ public class EditAddressActivity extends BaseActivity {
         if (!TextUtils.isEmpty(str)) {
             mAddress = new Gson().fromJson(str, Address.class);
         }
-
-        new ToolbarWrapper(this).setCustomTitle(
-                mAddress == null ? R.string.address_title_add : R.string.address_title_edit
-        );
-
+        new ToolbarWrapper(this).setCustomTitle(mAddress == null ? R.string.address_title_add : R.string.address_title_edit);
         if (mAddress != null) {
             etConsignee.setText(mAddress.getConsignee());
             etDetail.setText(mAddress.getAddress());
@@ -142,19 +137,13 @@ public class EditAddressActivity extends BaseActivity {
         }
     }
 
-    @OnTextChanged({
-            R.id.edit_consignee,
-            R.id.edit_tel,
-            R.id.edit_detail,
-            R.id.edit_zipcode,
-            R.id.edit_email
-    }) void onTextChanged() {
+    @OnTextChanged({R.id.edit_consignee, R.id.edit_tel, R.id.edit_detail, R.id.edit_zipcode, R.id.edit_email})
+    void onTextChanged() {
         mConsignee = etConsignee.getText().toString();
         mTel = etTel.getText().toString();
         mDetail = etDetail.getText().toString();
         mZipCode = etZipcode.getText().toString();
         mEmail = etEmail.getText().toString();
-
         checkAddressComplete();
     }
 
@@ -171,7 +160,6 @@ public class EditAddressActivity extends BaseActivity {
         } else {
             address = mAddress;
         }
-
         address.setConsignee(mConsignee);
         address.setTel(mTel);
         address.setMobile(mTel);
@@ -184,7 +172,6 @@ public class EditAddressActivity extends BaseActivity {
         address.setEmail(mEmail);
         address.setIsDefault(true);
 
-
         if (mAddress == null) {
             // 添加新地址.
             ApiAddressAdd apiAddressAdd = new ApiAddressAdd(address);
@@ -193,79 +180,59 @@ public class EditAddressActivity extends BaseActivity {
             ApiAddressUpdate apiAddressUpdate = new ApiAddressUpdate(address, address.getId());
             enqueue(apiAddressUpdate);
         }
-
     }
 
     private void checkAddressComplete() {
-        if (TextUtils.isEmpty(mConsignee)
-                || TextUtils.isEmpty(mTel)
-                || TextUtils.isEmpty(mDetail)
-                || TextUtils.isEmpty(mZipCode)
-                || TextUtils.isEmpty(mEmail)) {
+        if (TextUtils.isEmpty(mConsignee) || TextUtils.isEmpty(mTel) || TextUtils.isEmpty(mDetail)
+                || TextUtils.isEmpty(mZipCode) || TextUtils.isEmpty(mEmail)) {
             btnSave.setEnabled(false);
             return;
         }
-
-        if (mProvinceId == 0
-                || mCityId == 0
-                || mDistrictId == 0) {
+        if (mProvinceId == 0 || mCityId == 0 || mDistrictId == 0) {
             btnSave.setEnabled(false);
             return;
         }
-
         btnSave.setEnabled(true);
     }
 
     private void showSelectProvince() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.address_choose_province)
-                .setItems(regionsToStrings(mProvinceList), new DialogInterface.OnClickListener() {
-                    @Override public void onClick(DialogInterface dialog, int which) {
-                        Region region = mProvinceList.get(which);
-                        mProvinceId = region.getId();
-                        mProvinceName = region.getName();
-                        // 获取城市列表.
-                        enqueue(new ApiRegion(mProvinceId));
-                    }
-                })
-                .show();
-
+                .setItems(regionsToStrings(mProvinceList), (dialog, which) -> {
+                    Region region = mProvinceList.get(which);
+                    mProvinceId = region.getId();
+                    mProvinceName = region.getName();
+                    // 获取城市列表.
+                    enqueue(new ApiRegion(mProvinceId));
+                }).show();
     }
 
     private void showSelectCity() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.address_choose_city)
-                .setItems(regionsToStrings(mCityList), new DialogInterface.OnClickListener() {
-                    @Override public void onClick(DialogInterface dialog, int which) {
-                        Region region = mCityList.get(which);
-                        mCityId = region.getId();
-                        mCityName = region.getName();
-                        // 获取区域列表
-                        enqueue(new ApiRegion(mCityId));
-                    }
-                })
-                .show();
+                .setItems(regionsToStrings(mCityList), (dialog, which) -> {
+                    Region region = mCityList.get(which);
+                    mCityId = region.getId();
+                    mCityName = region.getName();
+                    // 获取区域列表
+                    enqueue(new ApiRegion(mCityId));
+                }).show();
     }
 
     private void showSelectDistrict() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.address_choose_district)
-                .setItems(regionsToStrings(mDistrictList), new DialogInterface.OnClickListener() {
-                    @Override public void onClick(DialogInterface dialog, int which) {
-                        Region region = mDistrictList.get(which);
-                        mDistrictId = region.getId();
-                        mDistrictName = region.getName();
-
-                        setRegionText();
-                        checkAddressComplete();
-                    }
-                })
-                .show();
+                .setItems(regionsToStrings(mDistrictList), (dialog, which) -> {
+                    Region region = mDistrictList.get(which);
+                    mDistrictId = region.getId();
+                    mDistrictName = region.getName();
+                    setRegionText();
+                    checkAddressComplete();
+                }).show();
     }
 
     private String[] regionsToStrings(List<Region> regionList) {
         ArrayList<String> list = new ArrayList<>();
-
         for (Region region : regionList) {
             list.add(region.getName());
         }
@@ -287,7 +254,6 @@ public class EditAddressActivity extends BaseActivity {
     }
 
     private void handleRegionResult(List<Region> data) {
-
         if (mProvinceList == null) {
             mProvinceList = data;
             showSelectProvince();
@@ -301,8 +267,8 @@ public class EditAddressActivity extends BaseActivity {
     }
 
     private void setRegionText() {
-        String info = String
-                .format("%s - %s%s", mProvinceName, mCityName, mDistrictName);
+        String info = String.format("%s - %s%s", mProvinceName, mCityName, mDistrictName);
         tvRegion.setText(info);
     }
+
 }

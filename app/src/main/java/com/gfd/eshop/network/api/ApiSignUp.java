@@ -18,9 +18,7 @@ public class ApiSignUp implements ApiInterface {
 
     private ApiSignUp.Req mReq;
 
-    public ApiSignUp(@NonNull String name,
-                     @NonNull String email,
-                     @NonNull String password) {
+    public ApiSignUp(@NonNull String name, @NonNull String email, @NonNull String password) {
         mReq = new Req();
         mReq.mName = name;
         mReq.mPassword = password;
@@ -44,7 +42,6 @@ public class ApiSignUp implements ApiInterface {
         @SerializedName("name") private String mName;
         @SerializedName("email") private String mEmail;
         @SerializedName("password") private String mPassword;
-
         @Override protected int sessionUsage() {
             return SESSION_NO_NEED;
         }
@@ -53,7 +50,6 @@ public class ApiSignUp implements ApiInterface {
     public static class Rsp extends ResponseEntity {
 
         @SerializedName("data") Data mData;
-
         public Data getData() {
             return mData;
         }
@@ -61,14 +57,13 @@ public class ApiSignUp implements ApiInterface {
         public static class Data {
             @SerializedName("session") private Session mSession;
             @SerializedName("user") private User mUser;
-
             public Session getSession() {
                 return mSession;
             }
-
             public User getUser() {
                 return mUser;
             }
         }
     }
+
 }

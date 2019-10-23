@@ -15,8 +15,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * 订单预览
+ */
 public class ApiOrderPreview implements ApiInterface {
-
 
     @NonNull
     @Override public String getPath() {
@@ -33,7 +35,6 @@ public class ApiOrderPreview implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -42,18 +43,14 @@ public class ApiOrderPreview implements ApiInterface {
     public static class Rsp extends ResponseEntity {
 
         @SerializedName("data") private Data mData;
-
         public Data getData() {
             return mData;
         }
 
         public static class Data {
             @SerializedName("goods_list") private List<CartGoods> mGoodsList;
-
             @SerializedName("consignee") private Address mAddress;
-
             @SerializedName("shipping_list") private List<Shipping> mShippingList; // 派送方式
-
             @SerializedName("payment_list") private List<Payment> mPaymentList; // 支付方式
 
             public List<CartGoods> getGoodsList() {

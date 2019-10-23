@@ -61,19 +61,19 @@ public class EShopMainActivity extends BaseActivity implements OnTabSelectListen
 
     @Override public void onTabSelected(@IdRes int tabId) {
         switch (tabId) {
-            case R.id.tab_home:
+            case R.id.tab_home://首页
                 if (mHomeFragment == null) mHomeFragment = HomeFragment.newInstance();
                 switchFragment(mHomeFragment);
                 break;
-            case R.id.tab_category:
+            case R.id.tab_category://分类
                 if (mCategoryFragment == null) mCategoryFragment = CategoryFragment.newInstance();
                 switchFragment(mCategoryFragment);
                 break;
-            case R.id.tab_cart:
+            case R.id.tab_cart://购物车
                 if (mCartFragment == null) mCartFragment = CartFragment.newInstance();
                 switchFragment(mCartFragment);
                 break;
-            case R.id.tab_mine:
+            case R.id.tab_mine://我的
                 if (mMineFragment == null) mMineFragment = MineFragment.newInstance();
                 switchFragment(mMineFragment);
                 break;
@@ -88,9 +88,39 @@ public class EShopMainActivity extends BaseActivity implements OnTabSelectListen
             bottomBar.selectTabWithId(R.id.tab_home);
             return;
         }
-
         // 将Activity所在的Task移到后台, 而不是finish此Activity
         moveTaskToBack(true);
+    }
+
+    /**
+     * 首页4个Fragment切换, 使用hide和show, 而不是replace.
+     * @param target 要显示的目标Fragment.
+     */
+    private void switchFragment(Fragment target) {
+        if (mCurrentFragment == target) return;
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (mCurrentFragment != null) {
+            // 隐藏当前正在显示的Fragment
+            transaction.hide(mCurrentFragment);
+        }
+        if (target.isAdded()) {
+            // 如果目标Fragment已经添加过, 就显示它
+            transaction.show(target);
+        } else {
+            // 否则直接添加该Fragment
+            transaction.add(R.id.layout_container, target, target.getClass().getName());
+        }
+        transaction.commit();
+        mCurrentFragment = target;
+    }
+
+    /** 找回FragmentManager中存储的Fragment*/
+    private void retrieveFragments() {
+        FragmentManager manager = getSupportFragmentManager();
+        mHomeFragment = (HomeFragment) manager.findFragmentByTag(HomeFragment.class.getName());
+        mCategoryFragment = (CategoryFragment) manager.findFragmentByTag(CategoryFragment.class.getName());
+        mCartFragment = (CartFragment) manager.findFragmentByTag(CartFragment.class.getName());
+        mMineFragment = (MineFragment) manager.findFragmentByTag(MineFragment.class.getName());
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
@@ -102,47 +132,6 @@ public class EShopMainActivity extends BaseActivity implements OnTabSelectListen
         } else {
             bottomBar.getTabAtPosition(2).removeBadge();
         }
-
     }
-
-
-    /**
-     * 首页4个Fragment切换, 使用hide和show, 而不是replace.
-     *
-     * @param target 要显示的目标Fragment.
-     */
-    private void switchFragment(Fragment target) {
-        if (mCurrentFragment == target) return;
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        if (mCurrentFragment != null) {
-            // 隐藏当前正在显示的Fragment
-            transaction.hide(mCurrentFragment);
-        }
-
-        if (target.isAdded()) {
-            // 如果目标Fragment已经添加过, 就显示它
-            transaction.show(target);
-        } else {
-            // 否则直接添加该Fragment
-            transaction.add(R.id.layout_container, target, target.getClass().getName());
-        }
-
-        transaction.commit();
-
-        mCurrentFragment = target;
-    }
-
-    // 找回FragmentManager中存储的Fragment
-    private void retrieveFragments() {
-        FragmentManager manager = getSupportFragmentManager();
-        mHomeFragment = (HomeFragment) manager.findFragmentByTag(HomeFragment.class.getName());
-        mCategoryFragment = (CategoryFragment) manager
-                .findFragmentByTag(CategoryFragment.class.getName());
-        mCartFragment = (CartFragment) manager.findFragmentByTag(CartFragment.class.getName());
-        mMineFragment = (MineFragment) manager.findFragmentByTag(MineFragment.class.getName());
-    }
-
 
 }

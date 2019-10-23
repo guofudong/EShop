@@ -86,7 +86,6 @@ public class GoodsActivity extends BaseActivity implements ViewPager.OnPageChang
 
     @Override
     protected void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp) {
-
         switch (apiPath) {
             case ApiPath.GOODS:
                 if (success) {
@@ -105,7 +104,6 @@ public class GoodsActivity extends BaseActivity implements ViewPager.OnPageChang
                 } else {
                     ToastWrapper.show(R.string.goods_msg_add_success);
                 }
-
                 break;
             default:
                 throw new UnsupportedOperationException(apiPath);
@@ -118,7 +116,6 @@ public class GoodsActivity extends BaseActivity implements ViewPager.OnPageChang
     }
 
     @Override public boolean onOptionsItemSelected(MenuItem item) {
-
         if (item.getItemId() == R.id.menu_share) {
             ToastWrapper.show(R.string.action_share);
             return true;
@@ -179,11 +176,9 @@ public class GoodsActivity extends BaseActivity implements ViewPager.OnPageChang
                 }
 
                 mBuy = view.getId() == R.id.button_buy;
-                mGoodsSpecPopupWindow.show(new GoodsSpecPopupWindow.OnConfirmListener() {
-                    @Override public void onConfirm(int number) {
-                        ApiCartCreate apiCartCreate = new ApiCartCreate(mGoodsInfo.getId(), number);
-                        enqueue(apiCartCreate);
-                    }
+                mGoodsSpecPopupWindow.show(number -> {
+                    ApiCartCreate apiCartCreate = new ApiCartCreate(mGoodsInfo.getId(), number);
+                    enqueue(apiCartCreate);
                 });
                 break;
             default:
@@ -191,8 +186,10 @@ public class GoodsActivity extends BaseActivity implements ViewPager.OnPageChang
         }
     }
 
-
-    // 选择Tab标签, 注意此方法只改变Tab标签的UI效果, 不会改变ViewPager的位置.
+    /**
+     * 选择Tab标签, 注意此方法只改变Tab标签的UI效果, 不会改变ViewPager的位置.
+     * @param position
+     */
     private void chooseTab(int position) {
         Resources res = getResources();
         for (int i = 0; i < tvTabList.size(); i++) {

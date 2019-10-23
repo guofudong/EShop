@@ -14,9 +14,10 @@ import com.gfd.eshop.network.entity.Picture;
 
 import butterknife.BindView;
 
-public abstract class CartGoodsAdapter extends
-        BaseListAdapter<CartGoods, CartGoodsAdapter.ViewHolder> {
-
+/**
+ * 购物车商品列表Adapter
+ */
+public abstract class CartGoodsAdapter extends BaseListAdapter<CartGoods, CartGoodsAdapter.ViewHolder> {
 
     @Override protected int getItemViewLayout() {
         return R.layout.item_cart_goods;
@@ -48,7 +49,6 @@ public abstract class CartGoodsAdapter extends
             tvName.setText(mItem.getGoodsName());
             tvPrice.setText(mItem.getTotalPrice());
             numberPicker.setNumber(mItem.getGoodsNumber());
-
             Picture picture = mItem.getImg();
             GlideUtils.loadPicture(picture, ivGoods);
         }
@@ -57,4 +57,5 @@ public abstract class CartGoodsAdapter extends
             numberChanged(mItem, number);
         }
     }
+
 }

@@ -33,19 +33,13 @@ import butterknife.ButterKnife;
  */
 public class HomeFragment extends BaseFragment {
 
-    private static final int[] PROMOTE_COLORS = {
-            R.color.purple,
-            R.color.orange,
-            R.color.pink,
-            R.color.colorPrimary
-    };
+    private static final int[] PROMOTE_COLORS = {R.color.purple, R.color.orange, R.color.pink, R.color.colorPrimary};
 
     private static final int[] PROMOTE_PLACE_HOLDER = {
-            R.drawable.mask_round_purple,
-            R.drawable.mask_round_orange,
-            R.drawable.mask_round_pink,
-            R.drawable.mask_round_yellow
+            R.drawable.mask_round_purple, R.drawable.mask_round_orange,
+            R.drawable.mask_round_pink, R.drawable.mask_round_yellow
     };
+
     private SimpleGoods simpleGoods;
 
     public static HomeFragment newInstance() {

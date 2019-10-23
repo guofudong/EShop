@@ -16,10 +16,12 @@ import java.net.URL;
 
 import butterknife.BindView;
 
+/**
+ * 帮助页面
+ */
 public class HelpActivity extends BaseActivity {
 
     @BindView(R.id.web_view) WebView webView;
-
     private PhotoWrapper mPhotoWrapper;
 
     @Override protected int getContentViewLayout() {
@@ -31,14 +33,11 @@ public class HelpActivity extends BaseActivity {
         mPhotoWrapper = new PhotoWrapper();
         webView.loadUrl("file:///android_asset/help.html");
         webView.setWebViewClient(new WebViewClient() {
-
             @SuppressWarnings("deprecation")
             @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
                 try {
                     URL target = new URL(url);
                     String host = target.getHost();
-
                     if ("eshop.feicuiedu.com".equals(host)) {
                         String query = target.getQuery().substring(4);
                         LogUtils.debug(query);
@@ -56,16 +55,14 @@ public class HelpActivity extends BaseActivity {
 
     @Override
     protected void onBusinessResponse(String apiPath, boolean success, ResponseEntity rsp) {
-
     }
 
     @Override public void onBackPressed() {
-
         if (webView.canGoBack()) {
             webView.goBack();
             return;
         }
-
         super.onBackPressed();
     }
+
 }

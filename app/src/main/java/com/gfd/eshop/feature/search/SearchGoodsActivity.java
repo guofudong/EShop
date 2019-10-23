@@ -87,7 +87,6 @@ public class SearchGoodsActivity extends BaseActivity {
         goodsListView.addFooterView(mFooter);
         goodsListView.setOnScrollListener(new EndlessScrollListener(0, 1) {
             @Override public boolean onLoadMore(int page, int totalItemsCount) {
-
                 if (mHasMore && mSearchCall == null) {
                     mFooter.setState(LoadMoreFooter.STATE_LOADING);
                     searchGoods(false);
@@ -140,7 +139,6 @@ public class SearchGoodsActivity extends BaseActivity {
         }
         textView.setActivated(true);
         String sortBy;
-
         switch (textView.getId()) {
             case R.id.text_is_hot:
                 sortBy = Filter.SORT_IS_HOT;
@@ -166,6 +164,10 @@ public class SearchGoodsActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 搜索页面
+     * @param isRefresh
+     */
     private void searchGoods(final boolean isRefresh) {
         if (mSearchCall != null) {
             throw new UnsupportedOperationException();

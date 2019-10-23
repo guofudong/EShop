@@ -27,11 +27,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+/**
+ * 显示图片对话框
+ */
 public class PhotoWrapper extends DialogFragment {
 
     @BindView(R.id.image_photo) ImageView ivPhoto;
 
-    private Unbinder mUnbinder;
+    private Unbinder mUnbind;
     private String mUrl;
 
     public PhotoWrapper() {
@@ -46,36 +49,28 @@ public class PhotoWrapper extends DialogFragment {
     @NonNull
     @Override public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
-
         Window window = dialog.getWindow();
         window.setBackgroundDrawable(new ColorDrawable(0));  // 无背景色
         window.requestFeature(Window.FEATURE_NO_TITLE);  // 无标题栏
-
         return dialog;
     }
 
     @Nullable @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_photo_dialog, container, false);
-        mUnbinder = ButterKnife.bind(this, view);
+        mUnbind = ButterKnife.bind(this, view);
         return view;
     }
 
     @Override public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ivPhoto.setImageDrawable(new ColorDrawable());
-
         SimpleTarget<Bitmap> target = new SimpleTarget<Bitmap>() {
             @Override
-            public void onResourceReady(Bitmap resource,
-                                        GlideAnimation<? super Bitmap> glideAnimation) {
+            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 ivPhoto.setImageBitmap(resource);
             }
         };
-
         Glide.with(getActivity())
                 .load(mUrl)
                 .asBitmap()
@@ -84,29 +79,40 @@ public class PhotoWrapper extends DialogFragment {
 
     @Override public void onStart() {
         super.onStart();
+        //设置对话框属性
         Window window = getDialog().getWindow();
         WindowManager.LayoutParams windowParams = window.getAttributes();
         windowParams.dimAmount = 0.6f;
-
         window.setAttributes(windowParams);
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     }
 
     @Override public void onDestroyView() {
         super.onDestroyView();
-        mUnbinder.unbind();
-        mUnbinder = null;
+        mUnbind.unbind();
+        mUnbind = null;
     }
 
+    /**
+     * 在Fragment中显示图片对话框
+     * @param fragment
+     * @param url：图片地址
+     */
     public void showPhoto(BaseFragment fragment, String url) {
         if (isAdded()) return;
         mUrl = url;
         show(fragment.getChildFragmentManager(), "PhotoWrapper");
     }
 
+    /**
+     * 在Activity中显示图片对话框
+     * @param activity
+     * @param url：图片地址
+     */
     public void showPhoto(BaseActivity activity, String url) {
         if (isAdded()) return;
         mUrl = url;
         show(activity.getSupportFragmentManager(), "PhotoWrapper");
     }
+
 }

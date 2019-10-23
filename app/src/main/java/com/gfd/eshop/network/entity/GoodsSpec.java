@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class GoodsSpec {
 
-
     public static final int ATTR_TYPE_UNIQUE = 0;
     public static final int ATTR_TYPE_SINGLE = 1;
     public static final int ATTR_TYPE_MULTIPLE = 2;
@@ -13,7 +12,6 @@ public class GoodsSpec {
     @SerializedName("attr_type") private int mAttrType;
 
     @SerializedName("name") private String mAttrName;
-
 
     public static class GoodsValue {
 
@@ -25,4 +23,5 @@ public class GoodsSpec {
 
         @SerializedName("format_price") private String mFormatPrice;
     }
+
 }

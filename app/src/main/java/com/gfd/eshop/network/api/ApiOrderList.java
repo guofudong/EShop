@@ -17,6 +17,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 
+/**
+ * 获取订单列表
+ */
 public class ApiOrderList implements ApiInterface {
 
     public static final String ORDER_AWAIT_PAY = "await_pay"; // 待支付
@@ -25,9 +28,7 @@ public class ApiOrderList implements ApiInterface {
     public static final String ORDER_SHIPPED = "shipped"; // 已发货
     public static final String ORDER_FINISHED = "finished"; // 已完成
 
-    @StringDef({
-            ORDER_AWAIT_PAY, ORDER_AWAIT_SHIP, ORDER_FINISHED, ORDER_SHIPPED, ORDER_UNCONFIRMED
-    })
+    @StringDef({ORDER_AWAIT_PAY, ORDER_AWAIT_SHIP, ORDER_FINISHED, ORDER_SHIPPED, ORDER_UNCONFIRMED})
     @Retention(RetentionPolicy.SOURCE)
     public @interface OrderType {
     }
@@ -55,10 +56,8 @@ public class ApiOrderList implements ApiInterface {
     }
 
     public static class Req extends RequestParam {
-
         @SerializedName("type") private String mType;
         @SerializedName("pagination") private Pagination mPagination;
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -67,15 +66,12 @@ public class ApiOrderList implements ApiInterface {
     public static class Rsp extends ResponseEntity {
         @SerializedName("paginated") private Paginated mPaginated;
         @SerializedName("data") private List<Order> mOrderList;
-
         public Paginated getPaginated() {
             return mPaginated;
         }
-
         public List<Order> getOrderList() {
             return mOrderList;
         }
     }
-
 
 }

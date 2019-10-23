@@ -48,7 +48,6 @@ public class SignInActivity extends BaseActivity {
         if (!ApiPath.USER_SIGNIN.equals(apiPath)) {
             throw new UnsupportedOperationException(apiPath);
         }
-
         mProgressWrapper.dismissProgress();
         if (success) {
             ToastWrapper.show(R.string.mine_msg_sign_in_success);
@@ -63,7 +62,6 @@ public class SignInActivity extends BaseActivity {
     @OnTextChanged({R.id.edit_password, R.id.edit_name}) void onTextChanged() {
         mUsername = etName.getText().toString();
         mPassword = etPassword.getText().toString();
-
         // 简单的条件判断: 用户名和密码不能为空.
         if (TextUtils.isEmpty(mUsername) || TextUtils.isEmpty(mPassword)) {
             btnSignIn.setEnabled(false);
@@ -84,4 +82,5 @@ public class SignInActivity extends BaseActivity {
         startActivity(intent);
         finishWithDefaultTransition();
     }
+
 }

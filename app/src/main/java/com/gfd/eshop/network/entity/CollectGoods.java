@@ -10,4 +10,5 @@ public class CollectGoods extends SimpleGoods {
     public int getRecId() {
         return mRecId;
     }
+
 }

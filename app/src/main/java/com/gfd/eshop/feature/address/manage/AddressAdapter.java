@@ -19,17 +19,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 收货地址Adapter
+ */
 public abstract class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHolder> {
-
 
     private final List<Address> mAddressList = new ArrayList<>();
 
-
     @Override public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_address, parent, false);
-
         return new ViewHolder(view);
     }
 
@@ -68,20 +67,9 @@ public abstract class AddressAdapter extends RecyclerView.Adapter<AddressAdapter
 
         public void bind(Address address) {
             mAddress = address;
-
             tvSetDefault.setSelected(mAddress.isDefault());
-            tvInfo1.setText(
-                    String.format("%s (%s)",
-                            mAddress.getConsignee(),
-                            mAddress.getProvinceName())
-            );
-            tvInfo2.setText(
-                    String.format("%s - %s - %s",
-                            mAddress.getCityName(),
-                            mAddress.getDistrictName(),
-                            mAddress.getAddress()
-                    )
-            );
+            tvInfo1.setText(String.format("%s (%s)", mAddress.getConsignee(), mAddress.getProvinceName()));
+            tvInfo2.setText(String.format("%s - %s - %s", mAddress.getCityName(), mAddress.getDistrictName(), mAddress.getAddress()));
         }
 
         @OnClick({R.id.text_set_default, R.id.text_edit, R.id.text_delete})
@@ -101,5 +89,6 @@ public abstract class AddressAdapter extends RecyclerView.Adapter<AddressAdapter
                     throw new UnsupportedOperationException();
             }
         }
+
     }
 }

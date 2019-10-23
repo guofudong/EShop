@@ -42,7 +42,6 @@ public class ApiCartCreate implements ApiInterface {
         @SerializedName("goods_id") private int mId;
         @SerializedName("number") private int mNumber;
         @SerializedName("spec") private List<Integer> mSpecs;
-
         @Override protected int sessionUsage() {
             return SESSION_MANDATORY;
         }
@@ -50,4 +49,5 @@ public class ApiCartCreate implements ApiInterface {
 
     public static class Rsp extends ResponseEntity {
     }
+
 }
