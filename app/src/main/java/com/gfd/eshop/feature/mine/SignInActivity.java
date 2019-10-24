@@ -52,9 +52,7 @@ public class SignInActivity extends BaseActivity {
         if (success) {
             ToastWrapper.show(R.string.mine_msg_sign_in_success);
             ApiSignIn.Rsp signInRsp = (ApiSignIn.Rsp) rsp;
-            UserManager.getInstance().setUser(
-                    signInRsp.getData().getUser(), signInRsp.getData().getSession()
-            );
+            UserManager.getInstance().setUser(signInRsp.getData().getUser(), signInRsp.getData().getSession());
             finish();
         }
     }

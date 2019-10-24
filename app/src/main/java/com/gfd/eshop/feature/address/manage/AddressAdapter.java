@@ -89,6 +89,6 @@ public abstract class AddressAdapter extends RecyclerView.Adapter<AddressAdapter
                     throw new UnsupportedOperationException();
             }
         }
-
     }
+
 }

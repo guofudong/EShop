@@ -31,7 +31,7 @@
             app:iconSpaceReserved="false">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://www.baidu.com" />
+                android:data="https://www.jianshu.com/u/1fa8a6a319f4" />
         </Preference>
         <Preference
             android:title="@string/settings_pref_custom_service_tel"

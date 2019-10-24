@@ -19,8 +19,7 @@ public class ApiSignIn implements ApiInterface {
 
     private final Req mReq;
 
-    public ApiSignIn(@NonNull String name,
-                     @NonNull String password) {
+    public ApiSignIn(@NonNull String name, @NonNull String password) {
         mReq = new Req();
         mReq.mName = name;
         mReq.mPassword = password;

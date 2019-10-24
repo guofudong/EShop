@@ -82,26 +82,25 @@ public class EditAddressActivity extends BaseActivity {
     }
 
     @Override protected void initView() {
-
         String str = getIntent().getStringExtra(EXTRA_ADDRESS);
         if (!TextUtils.isEmpty(str)) {
             mAddress = new Gson().fromJson(str, Address.class);
         }
         new ToolbarWrapper(this).setCustomTitle(mAddress == null ? R.string.address_title_add : R.string.address_title_edit);
         if (mAddress != null) {
+            //设置收货人信息
             etConsignee.setText(mAddress.getConsignee());
             etDetail.setText(mAddress.getAddress());
             etTel.setText(mAddress.getTel());
             etZipcode.setText(mAddress.getZipcode());
             etEmail.setText(mAddress.getEmail());
-
+            //设置地址信息
             mProvinceId = mAddress.getProvince();
             mProvinceName = mAddress.getProvinceName();
             mCityId = mAddress.getCity();
             mCityName = mAddress.getCityName();
             mDistrictId = mAddress.getDistrict();
             mDistrictName = mAddress.getDistrictName();
-
             setRegionText();
             checkAddressComplete();
         }
@@ -171,7 +170,6 @@ public class EditAddressActivity extends BaseActivity {
         address.setZipcode(mZipCode);
         address.setEmail(mEmail);
         address.setIsDefault(true);
-
         if (mAddress == null) {
             // 添加新地址.
             ApiAddressAdd apiAddressAdd = new ApiAddressAdd(address);

@@ -90,6 +90,7 @@ public class HomeFragment extends BaseFragment {
         mIvPromotes[3] = view.findViewById(R.id.image_promote_four);
         mTvPromoteGoods = view.findViewById(R.id.text_promote_goods);
         goodsListView.addHeaderView(view);
+        goodsListView.setDividerHeight(0);
         //下拉刷新
         mPtrWrapper = new PtrWrapper(this) {
             @Override

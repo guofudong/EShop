@@ -45,15 +45,15 @@ public class HomeGoodsAdapter extends BaseListAdapter<CategoryHome, HomeGoodsAda
 
         ViewHolder(View itemView) {
             super(itemView);
-            imageGrid.shuffle();
+        }
+
+        @Override protected void bind(int position) {
+            imageGrid.shuffle(position);
             mImageViews = imageGrid.getImageViews();
             for (int i = 0; i < mImageViews.length; i++) {
                 final int index = i;
                 mImageViews[i].setOnClickListener(v -> navigateToGoodsActivity(index));
             }
-        }
-
-        @Override protected void bind(int position) {
             mItem = getItem(position);
             tvCategory.setText(mItem.getName());
             ImageView[] imageViews = imageGrid.getImageViews();
@@ -64,7 +64,7 @@ public class HomeGoodsAdapter extends BaseListAdapter<CategoryHome, HomeGoodsAda
             }
         }
 
-        @OnClick(R.id.text_category) void navigateToSeach() {
+        @OnClick(R.id.text_category) void navigateToSearch() {
             Filter filter = new Filter();
             filter.setCategoryId(mItem.getId());
             Intent intent = SearchGoodsActivity.getStartIntent(getContext(), filter);

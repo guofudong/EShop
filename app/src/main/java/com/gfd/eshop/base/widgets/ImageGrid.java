@@ -77,8 +77,7 @@ public class ImageGrid extends ViewGroup {
                 imageViews[0].layout(left, top, left + diff, height);
                 imageViews[1].layout(left + diff, top, left + diff + height / 2, top + height / 2);
                 imageViews[2].layout(left + diff + height / 2, top, width, top + height / 2);
-                imageViews[3].layout(
-                        left + diff, top + height / 2, left + diff + height / 2, height);
+                imageViews[3].layout(left + diff, top + height / 2, left + diff + height / 2, height);
                 imageViews[4].layout(left + diff + height / 2, top + height / 2, width, height);
                 break;
             default:
@@ -91,10 +90,8 @@ public class ImageGrid extends ViewGroup {
         requestLayout();
     }
 
-    public void shuffle() {
-        Random random = new Random();
-
-        switch (random.nextInt(100) % 3) {
+    public void shuffle(int position) {
+        switch (position % 3) {
             case 0:
                 setGridMode(GRID_THREE);
                 return;
